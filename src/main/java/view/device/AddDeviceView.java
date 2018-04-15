@@ -12,7 +12,7 @@ public class AddDeviceView extends BaseView {
 
     @Override
     public void show() {
-        System.out.println("Device added");
+        System.out.println("Device added\n");
     }
 
 }

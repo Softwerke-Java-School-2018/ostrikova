@@ -22,13 +22,13 @@ public class DeleteDeviceMenu extends BaseMenu {
         int id = Integer.parseInt(stringId);
 
         if (devices.size() > 0) {
-            Iterator<Device> it = devices.iterator();
-            while (it.hasNext()) {
-                if (it.next().getId() == id) {
-                    it.remove();
-                    break;
+                Iterator<Device> it = devices.iterator();
+                while (it.hasNext()) {
+                    if (it.next().getId() == id) {
+                        it.remove();
+                        break;
+                    }
                 }
-            }
         } else {
             System.out.println("List of devices is empty");
         }

@@ -26,4 +26,28 @@ public class Device {
     public int getId() {
         return id;
     }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+    public void setProductionDate(String prodDate) {
+        this.productionDate = LocalDate.parse(prodDate);
+    }
+
+    public void setPrice(String price) {
+        this.price = new BigDecimal(price);
+    }
 }

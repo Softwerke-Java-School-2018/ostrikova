@@ -2,11 +2,13 @@ package menu;
 
 import menu.device.AddDeviceMenu;
 import menu.device.DeleteDeviceMenu;
+import menu.device.EditDeviceMenu;
 import model.Device;
 import view.BaseView;
 import view.ExitView;
 import view.device.AddDeviceView;
 import view.device.DeleteDeviceView;
+import view.device.EditDeviceView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,29 +32,6 @@ public class StartMenu {
         views.add(new ExitView(this));
     }
 
-    private void fillMenu() {
-
-        entries.add(new AddDeviceMenu(devices));
-        views.add(new AddDeviceView(this));
-
-        entries.add(new DeleteDeviceMenu(devices));
-        views.add(new DeleteDeviceView(this));
-
-
-    }
-
-    private void printMenu() {
-        System.out.println(
-                "---Select the option---\n" +
-                        "1. Exit\n" +
-                        "2. Add new device\n" +
-                        "3. Delete device\n"
-
-
-
-        );
-    }
-
     public void start() {
         fillMenu();
 
@@ -68,4 +47,33 @@ public class StartMenu {
 
         }
     }
+
+    private void fillMenu() {
+        fillDeviceMenu(devices);
+    }
+
+    private void fillDeviceMenu(List<Device> devices){
+        entries.add(new AddDeviceMenu(devices));
+        views.add(new AddDeviceView(this));
+
+        entries.add(new DeleteDeviceMenu(devices));
+        views.add(new DeleteDeviceView(this));
+
+        entries.add(new EditDeviceMenu(devices));
+        views.add(new EditDeviceView(this));
+    }
+
+    private void printMenu() {
+        System.out.println(
+                "---Select the option---\n" +
+                        "1. Exit\n" +
+                        "2. Add new device\n" +
+                        "3. Delete device\n" +
+                        "4. Edit device\n"
+
+
+
+        );
+    }
+
 }

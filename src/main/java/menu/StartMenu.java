@@ -1,10 +1,12 @@
 package menu;
 
 import menu.device.AddDeviceMenu;
+import menu.device.DeleteDeviceMenu;
 import model.Device;
 import view.BaseView;
 import view.ExitView;
 import view.device.AddDeviceView;
+import view.device.DeleteDeviceView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +35,8 @@ public class StartMenu {
         entries.add(new AddDeviceMenu(devices));
         views.add(new AddDeviceView(this));
 
-
+        entries.add(new DeleteDeviceMenu(devices));
+        views.add(new DeleteDeviceView(this));
 
 
     }
@@ -42,7 +45,9 @@ public class StartMenu {
         System.out.println(
                 "---Select the option---\n" +
                         "1. Exit\n" +
-                        "2. Add new device\n"
+                        "2. Add new device\n" +
+                        "3. Delete device\n"
+
 
 
         );

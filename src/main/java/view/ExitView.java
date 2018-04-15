@@ -12,6 +12,5 @@ public class ExitView extends BaseView {
     @Override
     public void show() {
         System.out.println("Successful exit");
-
     }
 }

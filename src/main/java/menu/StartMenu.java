@@ -1,11 +1,16 @@
 package menu;
 
+import menu.client.AddClientMenu;
+import menu.client.DeleteClientMenu;
 import menu.device.AddDeviceMenu;
 import menu.device.DeleteDeviceMenu;
 import menu.device.EditDeviceMenu;
+import model.Client;
 import model.Device;
 import view.BaseView;
 import view.ExitView;
+import view.client.AddClientView;
+import view.client.DeleteClientView;
 import view.device.AddDeviceView;
 import view.device.DeleteDeviceView;
 import view.device.EditDeviceView;
@@ -20,6 +25,7 @@ public class StartMenu {
     private List<BaseMenu> entries = new ArrayList<>();
     private List<BaseView> views = new ArrayList<>();
     private List<Device> devices = new ArrayList<>();
+    private List<Client> clients = new ArrayList<>();
 
     public StartMenu(){
         in = new Scanner(System.in);
@@ -50,6 +56,7 @@ public class StartMenu {
 
     private void fillMenu() {
         fillDeviceMenu(devices);
+        fillClientMenu(clients);
     }
 
     private void fillDeviceMenu(List<Device> devices){
@@ -63,13 +70,24 @@ public class StartMenu {
         views.add(new EditDeviceView(this));
     }
 
+    private void fillClientMenu(List<Client> clients){
+        entries.add(new AddClientMenu(clients));
+        views.add(new AddClientView(this));
+
+        entries.add(new DeleteClientMenu(clients));
+        views.add(new DeleteClientView(this));
+
+    }
+
     private void printMenu() {
         System.out.println(
                 "---Select the option---\n" +
                         "1. Exit\n" +
                         "2. Add new device\n" +
-                        "3. Delete device\n" +
-                        "4. Edit device\n"
+                        "3. Delete device by id\n" +
+                        "4. Edit device\n" +
+                        "5. Add new client\n" +
+                        "6. Delete client by id\n"
 
 
 

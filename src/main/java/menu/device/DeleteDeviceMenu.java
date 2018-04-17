@@ -17,7 +17,7 @@ public class DeleteDeviceMenu extends BaseMenu {
     @Override
     public void run() {
 
-        System.out.println("Enter the id of the device you want to delete");
+        System.out.println("---Enter the id of the device you want to delete---");
         String stringId = in.nextLine();
         int id = Integer.parseInt(stringId);
 

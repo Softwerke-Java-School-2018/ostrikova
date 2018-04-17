@@ -42,7 +42,16 @@ public class AddDeviceMenu extends BaseMenu {
         String stringPrice = in.nextLine();
         BigDecimal price = new BigDecimal(stringPrice);
 
-        devices.add(new Device(id, manufacturer, model, type, colour, productionDate, price));
+        Device device = new Device.Builder(id)
+                .setManufacturer(manufacturer)
+                .setModel(model)
+                .setType(type)
+                .setColour(colour)
+                .setProductionDate(productionDate)
+                .setPrice(price)
+                .build();
+
+        devices.add(device);
 
     }
 

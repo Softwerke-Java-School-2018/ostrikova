@@ -12,15 +12,8 @@ public class Device {
     private LocalDate productionDate;
     private BigDecimal price;
 
-    public Device(int id, String manufacturer, String model, String type,
-                  String colour, LocalDate productionDate, BigDecimal price){
-        this.id = id;
-        this.colour = colour;
-        this.manufacturer = manufacturer;
-        this.model = model;
-        this.productionDate = productionDate;
-        this.type = type;
-        this.price = price;
+    private Device(){
+
     }
 
     public int getId() {
@@ -49,5 +42,64 @@ public class Device {
 
     public void setPrice(String price) {
         this.price = new BigDecimal(price);
+    }
+
+    public static class Builder{
+        private int id;
+        private String manufacturer;
+        private String model;
+        private String type;
+        private String colour;
+        private LocalDate productionDate;
+        private BigDecimal price;
+
+        public Builder(int id){
+            this.id = id;
+        }
+
+        public Builder setManufacturer(String manufacturer){
+            this.manufacturer = manufacturer;
+            return this;
+        }
+
+        public Builder setModel(String model){
+            this.model = model;
+            return this;
+        }
+
+        public Builder setType(String type){
+            this.type = type;
+            return this;
+        }
+
+        public Builder setColour(String colour){
+            this.colour = colour;
+            return this;
+        }
+
+        public Builder setProductionDate(LocalDate productionDate){
+            this.productionDate = productionDate;
+            return this;
+        }
+
+        public Builder setPrice(BigDecimal price){
+            this.price = price;
+            return this;
+        }
+
+        public Device build(){
+            Device device = new Device();
+            device.id = this.id;
+            device.price = this.price;
+            device.colour = this.colour;
+            device.manufacturer = this.manufacturer;
+            device.model = this.model;
+            device.type = this.type;
+            device.productionDate = this.productionDate;
+
+            return device;
+        }
+
+
     }
 }

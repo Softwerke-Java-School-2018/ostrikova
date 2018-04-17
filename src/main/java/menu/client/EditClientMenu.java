@@ -2,7 +2,6 @@ package menu.client;
 
 import menu.BaseMenu;
 import model.Client;
-import model.Device;
 
 import java.util.List;
 import java.util.ListIterator;

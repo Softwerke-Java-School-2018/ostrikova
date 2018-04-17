@@ -29,7 +29,14 @@ public class AddClientMenu extends BaseMenu {
         String stringBirthDate = in.nextLine();
         LocalDate birthDate = LocalDate.parse(stringBirthDate);
 
-        clients.add(new Client(id, lastName, firstName, birthDate));
+        Client client = new Client.Builder(id)
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setBirthDate(birthDate)
+                .build();
+
+      
+        clients.add(client);
 
     }
 }

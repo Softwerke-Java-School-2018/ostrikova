@@ -2,11 +2,12 @@ package menu.client;
 
 import menu.BaseMenu;
 import model.Client;
+import scanner.Scanner;
 
 import java.util.List;
 import java.util.ListIterator;
 
-public class EditClientMenu extends BaseMenu {
+public class EditClientMenu implements BaseMenu {
     List<Client> clients;
 
     public EditClientMenu(List<Client> clients) {
@@ -15,13 +16,14 @@ public class EditClientMenu extends BaseMenu {
 
     @Override
     public void run() {
-        System.out.println("---Enter the id of editing client---");
-        int id = Integer.parseInt(in.nextLine());
+        Scanner.getInstance().printLine("---Enter the id of editing client---");
+        String stringId = Scanner.getInstance().readLine();
+        int id = Integer.parseInt(stringId);
 
-        System.out.println("---Select the edit field---");
+        Scanner.getInstance().printLine("---Select the edit field---");
         showFields();
 
-        String editField = in.nextLine();
+        String editField = Scanner.getInstance().readLine();
 
         switch (editField){
             case "1":
@@ -37,7 +39,7 @@ public class EditClientMenu extends BaseMenu {
     }
 
     private void showFields() {
-        System.out.println(
+        Scanner.getInstance().printLine(
                 "1. First Name\n" +
                         "2. Last Name\n" +
                         "3. Birth Date\n"
@@ -45,8 +47,8 @@ public class EditClientMenu extends BaseMenu {
     }
 
     private void editFirstName(int id){
-        System.out.println("---Enter new First Name---");
-        String newFirstName = in.nextLine();
+        Scanner.getInstance().printLine("---Enter new First Name---");
+        String newFirstName = Scanner.getInstance().readLine();
 
         ListIterator<Client> it = clients.listIterator();
         while (it.hasNext()) {
@@ -58,8 +60,8 @@ public class EditClientMenu extends BaseMenu {
     }
 
     private void editLastName(int id){
-        System.out.println("---Enter new Last Name---");
-        String newLastName = in.nextLine();
+        Scanner.getInstance().printLine("---Enter new Last Name---");
+        String newLastName = Scanner.getInstance().readLine();
 
         ListIterator<Client> it = clients.listIterator();
         while (it.hasNext()) {
@@ -71,8 +73,8 @@ public class EditClientMenu extends BaseMenu {
     }
 
     private void editBirthDate(int id){
-        System.out.println("---Enter new Birth Date---");
-        String newLastName = in.nextLine();
+        Scanner.getInstance().printLine("---Enter new Birth Date---");
+        String newLastName = Scanner.getInstance().readLine();
 
         ListIterator<Client> it = clients.listIterator();
         while (it.hasNext()) {

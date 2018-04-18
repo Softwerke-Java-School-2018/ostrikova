@@ -2,11 +2,12 @@ package menu.device;
 
 import menu.BaseMenu;
 import model.Device;
+import scanner.Scanner;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class DeleteDeviceMenu extends BaseMenu {
+public class DeleteDeviceMenu implements BaseMenu {
     List<Device> devices;
 
     public DeleteDeviceMenu(List<Device> devices) {
@@ -17,8 +18,8 @@ public class DeleteDeviceMenu extends BaseMenu {
     @Override
     public void run() {
 
-        System.out.println("---Enter the id of the device you want to delete---");
-        String stringId = in.nextLine();
+        Scanner.getInstance().printLine("---Enter the id of the device you want to delete---");
+        String stringId = Scanner.getInstance().readLine();
         int id = Integer.parseInt(stringId);
 
         if (devices.size() > 0) {
@@ -30,7 +31,7 @@ public class DeleteDeviceMenu extends BaseMenu {
                     }
                 }
         } else {
-            System.out.println("List of devices is empty");
+            Scanner.getInstance().printLine("List of devices is empty");
         }
 
     }

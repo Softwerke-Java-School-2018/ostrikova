@@ -2,11 +2,12 @@ package menu.client;
 
 import menu.BaseMenu;
 import model.Client;
+import scanner.Scanner;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class DeleteClientMenu extends BaseMenu {
+public class DeleteClientMenu implements BaseMenu {
     List<Client> clients;
 
     public DeleteClientMenu(List<Client> clients) {
@@ -15,8 +16,8 @@ public class DeleteClientMenu extends BaseMenu {
 
     @Override
     public void run() {
-        System.out.println("---Enter the id of the client you want to delete---");
-        String stringId = in.nextLine();
+        Scanner.getInstance().printLine("---Enter the id of the client you want to delete---");
+        String stringId = Scanner.getInstance().readLine();
         int id = Integer.parseInt(stringId);
 
         if (clients.size() > 0) {
@@ -28,7 +29,7 @@ public class DeleteClientMenu extends BaseMenu {
                 }
             }
         } else {
-            System.out.println("List of clients is empty");
+            Scanner.getInstance().printLine("List of clients is empty");
         }
 
     }

@@ -1,9 +1,10 @@
 package view.device;
 
 import menu.StartMenu;
+import scanner.Scanner;
 import view.BaseView;
 
-public class EditDeviceView extends BaseView {
+public class EditDeviceView implements BaseView {
     StartMenu startMenu;
 
     public EditDeviceView(StartMenu startMenu){
@@ -12,6 +13,6 @@ public class EditDeviceView extends BaseView {
 
     @Override
     public void show() {
-        System.out.println("Device edited successfully\n");
+        Scanner.getInstance().printLine("Device edited successfully\n");
     }
 }

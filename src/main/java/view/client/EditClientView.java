@@ -1,9 +1,10 @@
 package view.client;
 
 import menu.StartMenu;
+import scanner.Scanner;
 import view.BaseView;
 
-public class EditClientView extends BaseView {
+public class EditClientView implements BaseView {
     StartMenu startMenu;
 
     public EditClientView(StartMenu startMenu){
@@ -12,6 +13,6 @@ public class EditClientView extends BaseView {
 
     @Override
     public void show() {
-        System.out.println("Client edited successfully\n");
+        Scanner.getInstance().printLine("Client edited successfully\n");
     }
 }

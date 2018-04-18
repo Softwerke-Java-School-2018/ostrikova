@@ -1,9 +1,10 @@
 package view.client;
 
 import menu.StartMenu;
+import scanner.Scanner;
 import view.BaseView;
 
-public class AddClientView extends BaseView {
+public class AddClientView implements BaseView {
     StartMenu startMenu;
 
     public AddClientView(StartMenu startMenu){
@@ -12,6 +13,6 @@ public class AddClientView extends BaseView {
 
     @Override
     public void show() {
-        System.out.println("Client added\n");
+        Scanner.getInstance().printLine("Client added\n");
     }
 }

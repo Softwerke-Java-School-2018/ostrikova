@@ -1,7 +1,7 @@
 package view;
 
-public abstract class BaseView{
+public interface BaseView{
 
-    public abstract void show();
+    void show();
 
 }

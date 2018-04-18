@@ -1,8 +1,9 @@
 package view;
 
 import menu.StartMenu;
+import scanner.Scanner;
 
-public class ExitView extends BaseView {
+public class ExitView implements BaseView {
     StartMenu startMenu;
 
     public ExitView(StartMenu startMenu) {
@@ -11,6 +12,6 @@ public class ExitView extends BaseView {
 
     @Override
     public void show() {
-        System.out.println("Successful exit");
+        Scanner.getInstance().printLine("Successful exit");
     }
 }

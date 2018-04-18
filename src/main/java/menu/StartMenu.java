@@ -2,33 +2,33 @@ package menu;
 
 import menu.client.AddClientMenu;
 import menu.client.DeleteClientMenu;
+import menu.client.EditClientMenu;
 import menu.device.AddDeviceMenu;
 import menu.device.DeleteDeviceMenu;
 import menu.device.EditDeviceMenu;
 import model.Client;
 import model.Device;
+import scanner.Scanner;
 import view.BaseView;
 import view.ExitView;
 import view.client.AddClientView;
 import view.client.DeleteClientView;
+import view.client.EditClientView;
 import view.device.AddDeviceView;
 import view.device.DeleteDeviceView;
 import view.device.EditDeviceView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class StartMenu {
     private boolean isExit = false;
-    private Scanner in;
     private List<BaseMenu> entries = new ArrayList<>();
     private List<BaseView> views = new ArrayList<>();
     private List<Device> devices = new ArrayList<>();
     private List<Client> clients = new ArrayList<>();
 
     public StartMenu(){
-        in = new Scanner(System.in);
         entries.add(new BaseMenu() {
             @Override
             public void run() {
@@ -44,7 +44,7 @@ public class StartMenu {
         while (!isExit) {
             printMenu();
 
-            String line = in.nextLine();
+            String line = Scanner.getInstance().readLine();
             int choice = Integer.parseInt(line);
             BaseMenu menu = entries.get(choice - 1);
             BaseView view = views.get(choice - 1);
@@ -77,10 +77,12 @@ public class StartMenu {
         entries.add(new DeleteClientMenu(clients));
         views.add(new DeleteClientView(this));
 
+        entries.add(new EditClientMenu(clients));
+        views.add(new EditClientView(this));
     }
 
     private void printMenu() {
-        System.out.println(
+        Scanner.getInstance().printLine(
                 "---Select the option---\n" +
                         "1. Exit\n" +
                         "2. Add new device\n" +

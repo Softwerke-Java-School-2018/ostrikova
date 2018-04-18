@@ -2,12 +2,14 @@ package menu.device;
 
 import menu.BaseMenu;
 import model.Device;
+import scanner.Scanner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-public class AddDeviceMenu extends BaseMenu {
+
+public class AddDeviceMenu implements BaseMenu {
     List<Device> devices;
 
     public AddDeviceMenu(List<Device> devices) {
@@ -18,28 +20,28 @@ public class AddDeviceMenu extends BaseMenu {
     @Override
     public void run() {
 
-        System.out.println("Enter id");
-        String stringId = in.nextLine();
+        Scanner.getInstance().printLine("Enter id");
+        String stringId = Scanner.getInstance().readLine();
         int id = Integer.parseInt(stringId);
 
-        System.out.println("Enter manufacturer");
-        String manufacturer = in.nextLine();
+        Scanner.getInstance().printLine("Enter manufacturer");
+        String manufacturer = Scanner.getInstance().readLine();
 
-        System.out.println("Enter model");
-        String model = in.nextLine();
+        Scanner.getInstance().printLine("Enter model");
+        String model = Scanner.getInstance().readLine();
 
-        System.out.println("Enter type");
-        String type = in.nextLine();
+        Scanner.getInstance().printLine("Enter type");
+        String type = Scanner.getInstance().readLine();
 
-        System.out.println("Enter colour");
-        String colour = in.nextLine();
+        Scanner.getInstance().printLine("Enter colour");
+        String colour = Scanner.getInstance().readLine();
 
-        System.out.println("Enter production date in format YYYY-MM-DD");
-        String prodDate = in.nextLine();
+        Scanner.getInstance().printLine("Enter production date in format YYYY-MM-DD");
+        String prodDate = Scanner.getInstance().readLine();
         LocalDate productionDate = LocalDate.parse(prodDate);
 
-        System.out.println("Enter price");
-        String stringPrice = in.nextLine();
+        Scanner.getInstance().printLine("Enter price");
+        String stringPrice = Scanner.getInstance().readLine();
         BigDecimal price = new BigDecimal(stringPrice);
 
         Device device = new Device.Builder(id)

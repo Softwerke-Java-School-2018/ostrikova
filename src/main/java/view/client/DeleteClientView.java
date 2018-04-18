@@ -1,9 +1,10 @@
 package view.client;
 
 import menu.StartMenu;
+import scanner.Scanner;
 import view.BaseView;
 
-public class DeleteClientView extends BaseView {
+public class DeleteClientView implements BaseView {
     StartMenu startMenu;
 
     public DeleteClientView(StartMenu startMenu){
@@ -12,6 +13,6 @@ public class DeleteClientView extends BaseView {
 
     @Override
     public void show() {
-        System.out.println("Client deleted\n");
+        Scanner.getInstance().printLine("Client deleted\n");
     }
 }

@@ -2,11 +2,12 @@ package menu.client;
 
 import menu.BaseMenu;
 import model.Client;
+import scanner.Scanner;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class AddClientMenu extends BaseMenu {
+public class AddClientMenu implements BaseMenu {
     List<Client> clients;
 
     public AddClientMenu(List<Client> clients) {
@@ -15,18 +16,18 @@ public class AddClientMenu extends BaseMenu {
 
     @Override
     public void run() {
-        System.out.println("Enter id");
-        String stringId = in.nextLine();
+        Scanner.getInstance().printLine("Enter id");
+        String stringId = Scanner.getInstance().readLine();
         int id = Integer.parseInt(stringId);
 
-        System.out.println("Enter Last Name");
-        String lastName = in.nextLine();
+        Scanner.getInstance().printLine("Enter Last Name");
+        String lastName = Scanner.getInstance().readLine();
 
-        System.out.println("Enter First Name");
-        String firstName = in.nextLine();
+        Scanner.getInstance().printLine("Enter First Name");
+        String firstName = Scanner.getInstance().readLine();
 
-        System.out.println("Enter Birth Date in format YYYY-MM-DD");
-        String stringBirthDate = in.nextLine();
+        Scanner.getInstance().printLine("Enter Birth Date in format YYYY-MM-DD");
+        String stringBirthDate = Scanner.getInstance().readLine();
         LocalDate birthDate = LocalDate.parse(stringBirthDate);
 
         Client client = new Client.Builder(id)
@@ -35,7 +36,7 @@ public class AddClientMenu extends BaseMenu {
                 .setBirthDate(birthDate)
                 .build();
 
-      
+
         clients.add(client);
 
     }

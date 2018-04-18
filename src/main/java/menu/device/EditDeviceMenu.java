@@ -2,11 +2,13 @@ package menu.device;
 
 import menu.BaseMenu;
 import model.Device;
+import scanner.Scanner;
 
 import java.util.List;
 import java.util.ListIterator;
 
-public class EditDeviceMenu extends BaseMenu {
+
+public class EditDeviceMenu implements BaseMenu {
     List<Device> devices;
 
     public EditDeviceMenu(List<Device> devices) {
@@ -15,13 +17,14 @@ public class EditDeviceMenu extends BaseMenu {
 
     @Override
     public void run() {
-        System.out.println("---Enter the id of editing device---");
-        int id = Integer.parseInt(in.nextLine());
+        Scanner.getInstance().printLine("---Enter the id of editing device---");
+        String stringId = Scanner.getInstance().readLine();
+        int id = Integer.parseInt(stringId);
 
-        System.out.println("---Select the edit field---");
+        Scanner.getInstance().printLine("---Select the edit field---");
         showFields();
 
-        String editField = in.nextLine();
+        String editField = Scanner.getInstance().readLine();
 
         switch (editField){
             case "1":
@@ -48,7 +51,7 @@ public class EditDeviceMenu extends BaseMenu {
     }
 
     private void showFields() {
-        System.out.println(
+        Scanner.getInstance().printLine(
                 "1. Manufacturer\n" +
                         "2. Model\n" +
                         "3. Type\n" +
@@ -60,8 +63,8 @@ public class EditDeviceMenu extends BaseMenu {
     }
 
     private void editManufacturer(int id){
-        System.out.println("---Enter new manufacturer---");
-        String newManufacturer = in.nextLine();
+        Scanner.getInstance().printLine("---Enter new manufacturer---");
+        String newManufacturer = Scanner.getInstance().readLine();
 
         ListIterator<Device> it = devices.listIterator();
         while (it.hasNext()) {
@@ -73,8 +76,8 @@ public class EditDeviceMenu extends BaseMenu {
     }
 
     private void editModel(int id){
-        System.out.println("---Enter new model---");
-        String newModel = in.nextLine();
+        Scanner.getInstance().printLine("---Enter new model---");
+        String newModel = Scanner.getInstance().readLine();
 
         ListIterator<Device> it = devices.listIterator();
         while (it.hasNext()) {
@@ -86,8 +89,8 @@ public class EditDeviceMenu extends BaseMenu {
     }
 
     private void editType(int id){
-        System.out.println("---Enter new type---");
-        String newType = in.nextLine();
+        Scanner.getInstance().printLine("---Enter new type---");
+        String newType = Scanner.getInstance().readLine();
 
         ListIterator<Device> it = devices.listIterator();
         while (it.hasNext()) {
@@ -99,8 +102,8 @@ public class EditDeviceMenu extends BaseMenu {
     }
 
     private void editColour(int id){
-        System.out.println("---Enter new colour---");
-        String newColour = in.nextLine();
+        Scanner.getInstance().printLine("---Enter new colour---");
+        String newColour = Scanner.getInstance().readLine();
 
         ListIterator<Device> it = devices.listIterator();
         while (it.hasNext()) {
@@ -112,8 +115,8 @@ public class EditDeviceMenu extends BaseMenu {
     }
 
     private void editProductionDate(int id){
-        System.out.println("---Enter new production date---");
-        String newProdDate = in.nextLine();
+        Scanner.getInstance().printLine("---Enter new production date---");
+        String newProdDate = Scanner.getInstance().readLine();
 
         ListIterator<Device> it = devices.listIterator();
         while (it.hasNext()) {
@@ -125,8 +128,8 @@ public class EditDeviceMenu extends BaseMenu {
     }
 
     private void editPrice(int id){
-        System.out.println("---Enter new price---");
-        String newPrice = in.nextLine();
+        Scanner.getInstance().printLine("---Enter new price---");
+        String newPrice = Scanner.getInstance().readLine();
 
         ListIterator<Device> it = devices.listIterator();
         while (it.hasNext()) {

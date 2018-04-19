@@ -2,16 +2,17 @@ package menu.device;
 
 import menu.BaseMenu;
 import model.Device;
+import model.ModelStorage;
 import scanner.Scanner;
 
 import java.util.Iterator;
 import java.util.List;
 
 public class DeleteDeviceMenu implements BaseMenu {
-    List<Device> devices;
+    private List<Device> devices;
 
-    public DeleteDeviceMenu(List<Device> devices) {
-        this.devices = devices;
+    public DeleteDeviceMenu(ModelStorage modelStorage) {
+        this.devices = modelStorage.getDevices();
     }
 
 

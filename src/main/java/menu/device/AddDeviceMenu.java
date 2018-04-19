@@ -2,18 +2,18 @@ package menu.device;
 
 import menu.BaseMenu;
 import model.Device;
+import model.ModelStorage;
 import scanner.Scanner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
 
 public class AddDeviceMenu implements BaseMenu {
-    List<Device> devices;
+    private ModelStorage modelStorage;
 
-    public AddDeviceMenu(List<Device> devices) {
-        this.devices = devices;
+    public AddDeviceMenu(ModelStorage modelStorage) {
+        this.modelStorage = modelStorage;
     }
 
 
@@ -53,7 +53,7 @@ public class AddDeviceMenu implements BaseMenu {
                 .setPrice(price)
                 .build();
 
-        devices.add(device);
+        modelStorage.addDevice(device);
 
     }
 

@@ -2,16 +2,16 @@ package menu.client;
 
 import menu.BaseMenu;
 import model.Client;
+import model.ModelStorage;
 import scanner.Scanner;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class AddClientMenu implements BaseMenu {
-    List<Client> clients;
+    private ModelStorage modelStorage;
 
-    public AddClientMenu(List<Client> clients) {
-        this.clients = clients;
+    public AddClientMenu(ModelStorage modelStorage) {
+        this.modelStorage = modelStorage;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class AddClientMenu implements BaseMenu {
                 .build();
 
 
-        clients.add(client);
+        modelStorage.addClient(client);
 
     }
 }

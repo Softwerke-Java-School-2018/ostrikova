@@ -2,6 +2,7 @@ package menu.device;
 
 import menu.BaseMenu;
 import model.Device;
+import model.ModelStorage;
 import scanner.Scanner;
 
 import java.util.List;
@@ -9,10 +10,10 @@ import java.util.ListIterator;
 
 
 public class EditDeviceMenu implements BaseMenu {
-    List<Device> devices;
+    private List<Device> devices;
 
-    public EditDeviceMenu(List<Device> devices) {
-        this.devices = devices;
+    public EditDeviceMenu(ModelStorage modelStorage) {
+        this.devices = modelStorage.getDevices();
     }
 
     @Override

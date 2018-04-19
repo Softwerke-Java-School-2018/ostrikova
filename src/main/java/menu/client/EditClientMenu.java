@@ -2,16 +2,17 @@ package menu.client;
 
 import menu.BaseMenu;
 import model.Client;
+import model.ModelStorage;
 import scanner.Scanner;
 
 import java.util.List;
 import java.util.ListIterator;
 
 public class EditClientMenu implements BaseMenu {
-    List<Client> clients;
+    private List<Client> clients;
 
-    public EditClientMenu(List<Client> clients) {
-        this.clients = clients;
+    public EditClientMenu(ModelStorage modelStorage) {
+        this.clients = modelStorage.getClients();
     }
 
     @Override
@@ -25,7 +26,7 @@ public class EditClientMenu implements BaseMenu {
 
         String editField = Scanner.getInstance().readLine();
 
-        switch (editField){
+        switch (editField) {
             case "1":
                 editFirstName(id);
                 break;
@@ -46,7 +47,7 @@ public class EditClientMenu implements BaseMenu {
         );
     }
 
-    private void editFirstName(int id){
+    private void editFirstName(int id) {
         Scanner.getInstance().printLine("---Enter new First Name---");
         String newFirstName = Scanner.getInstance().readLine();
 
@@ -59,7 +60,7 @@ public class EditClientMenu implements BaseMenu {
         }
     }
 
-    private void editLastName(int id){
+    private void editLastName(int id) {
         Scanner.getInstance().printLine("---Enter new Last Name---");
         String newLastName = Scanner.getInstance().readLine();
 
@@ -72,7 +73,7 @@ public class EditClientMenu implements BaseMenu {
         }
     }
 
-    private void editBirthDate(int id){
+    private void editBirthDate(int id) {
         Scanner.getInstance().printLine("---Enter new Birth Date---");
         String newLastName = Scanner.getInstance().readLine();
 

@@ -2,16 +2,17 @@ package menu.client;
 
 import menu.BaseMenu;
 import model.Client;
+import model.ModelStorage;
 import scanner.Scanner;
 
 import java.util.Iterator;
 import java.util.List;
 
 public class DeleteClientMenu implements BaseMenu {
-    List<Client> clients;
+    private List<Client> clients;
 
-    public DeleteClientMenu(List<Client> clients) {
-        this.clients = clients;
+    public DeleteClientMenu(ModelStorage modelStorage) {
+        this.clients = modelStorage.getClients();
     }
 
     @Override
@@ -29,7 +30,7 @@ public class DeleteClientMenu implements BaseMenu {
                 }
             }
         } else {
-            Scanner.getInstance().printLine("List of clients is empty");
+            Scanner.getInstance().printLine("Can't be removed. List of clients is empty");
         }
 
     }

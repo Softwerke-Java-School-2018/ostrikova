@@ -27,6 +27,12 @@ public class Client {
         this.birthDate = LocalDate.parse(birthDate);
     }
 
+    @Override
+    public String toString(){
+        return this.clientId + " " + this.firstName
+                + " " + this.lastName + " " + this.birthDate;
+    }
+
     public static class Builder{
         private int clientId;
         private String firstName;

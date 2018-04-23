@@ -1,5 +1,8 @@
 package scanner;
 
+import model.Client;
+import model.Device;
+
 public class Scanner {
 
     private static Scanner instance;
@@ -16,6 +19,14 @@ public class Scanner {
 
     public void printLine(String line){
         System.out.println(line);
+    }
+
+    public void printLine(Device device){
+        System.out.println(device);
+    }
+
+    public void printLine(Client client){
+        System.out.println(client);
     }
 
     public static Scanner getInstance() {

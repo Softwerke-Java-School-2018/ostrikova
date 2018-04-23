@@ -5,7 +5,7 @@ import scanner.Scanner;
 import view.BaseView;
 
 public class DeleteClientView implements BaseView {
-    StartMenu startMenu;
+    private StartMenu startMenu;
 
     public DeleteClientView(StartMenu startMenu){
         this.startMenu = startMenu;

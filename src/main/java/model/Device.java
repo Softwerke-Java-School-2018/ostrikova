@@ -20,6 +20,18 @@ public class Device {
         return id;
     }
 
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
@@ -42,6 +54,14 @@ public class Device {
 
     public void setPrice(String price) {
         this.price = new BigDecimal(price);
+    }
+
+    @Override
+    public String toString(){
+        return this.id + " " + this.manufacturer + " "
+                + this.model + " " + this.type + " "
+                + this.colour + " " + this.productionDate + " "
+                + this.price;
     }
 
     public static class Builder{

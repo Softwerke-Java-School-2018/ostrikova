@@ -5,7 +5,7 @@ import scanner.Scanner;
 import view.BaseView;
 
 public class AddDeviceView implements BaseView {
-    StartMenu startMenu;
+    private StartMenu startMenu;
 
     public AddDeviceView(StartMenu startMenu){
         this.startMenu = startMenu;

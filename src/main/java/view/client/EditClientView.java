@@ -5,7 +5,7 @@ import scanner.Scanner;
 import view.BaseView;
 
 public class EditClientView implements BaseView {
-    StartMenu startMenu;
+    private StartMenu startMenu;
 
     public EditClientView(StartMenu startMenu){
         this.startMenu = startMenu;

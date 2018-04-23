@@ -51,7 +51,9 @@ public class StartMenu {
                         "5. Add new client\n" +
                         "6. Delete client by id\n" +
                         "7. Edit client\n" +
-                        "8. Add purchase\n"
+                        "8. Add purchase\n" +
+                        "9. Sort devices\n" +
+                        "10. Sort clients\n"
 
 
 

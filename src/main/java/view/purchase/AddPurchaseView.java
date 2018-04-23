@@ -7,7 +7,6 @@ import scanner.Scanner;
 import view.BaseView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddPurchaseView implements BaseView {
     private StartMenu startMenu;

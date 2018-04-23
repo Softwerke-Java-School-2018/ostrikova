@@ -7,6 +7,8 @@ import menu.device.AddDeviceMenu;
 import menu.device.DeleteDeviceMenu;
 import menu.device.EditDeviceMenu;
 import menu.purchase.AddPurchaseMenu;
+import menu.sort.ClientSortMenu;
+import menu.sort.DeviceSortMenu;
 import model.ModelStorage;
 import view.BaseView;
 import view.client.AddClientView;
@@ -16,6 +18,8 @@ import view.device.AddDeviceView;
 import view.device.DeleteDeviceView;
 import view.device.EditDeviceView;
 import view.purchase.AddPurchaseView;
+import view.sort.ClientSortView;
+import view.sort.DeviceSortView;
 
 import java.util.List;
 
@@ -34,6 +38,7 @@ public class BootstrapMenu {
         fillDeviceMenu(modelStorage);
         fillClientMenu(modelStorage);
         fillPurchaseMenu(modelStorage);
+        fillSortMenu(modelStorage);
     }
 
     private void fillDeviceMenu(ModelStorage modelStorage){
@@ -63,5 +68,15 @@ public class BootstrapMenu {
         views.add(addPurchaseView);
         entries.add(new AddPurchaseMenu(modelStorage, addPurchaseView));
 
+    }
+
+    private void fillSortMenu(ModelStorage modelStorage){
+        DeviceSortView deviceSortView = new DeviceSortView(startMenu);
+        views.add(deviceSortView);
+        entries.add(new DeviceSortMenu(modelStorage, deviceSortView));
+
+        ClientSortView clientSortView = new ClientSortView(startMenu);
+        views.add(clientSortView);
+        entries.add(new ClientSortMenu(modelStorage, clientSortView));
     }
 }

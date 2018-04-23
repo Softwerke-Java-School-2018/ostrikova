@@ -2,6 +2,7 @@ package model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Comparator;
 
 public class Device {
     private int id;
@@ -63,6 +64,63 @@ public class Device {
                 + this.colour + " " + this.productionDate + " "
                 + this.price;
     }
+
+    public static Comparator<Device> COMPARE_BY_ID = new Comparator<Device>() {
+        public int compare(Device one, Device other) {
+            String oneId = String.valueOf(one.getId());
+            String otherId = String.valueOf(other.getId());
+            return oneId.compareTo(otherId);
+        }
+    };
+
+    public static Comparator<Device> COMPARE_BY_MANUFACTURER = new Comparator<Device>() {
+        public int compare(Device one, Device other) {
+            String oneManufacturer = one.getManufacturer();
+            String otherManufacturer = other.getManufacturer();
+            return oneManufacturer.compareTo(otherManufacturer);
+        }
+    };
+
+    public static Comparator<Device> COMPARE_BY_MODEL = new Comparator<Device>() {
+        public int compare(Device one, Device other) {
+            String oneModel = one.getModel();
+            String otherModel = other.getModel();
+            return oneModel.compareTo(otherModel);
+        }
+    };
+
+    public static Comparator<Device> COMPARE_BY_COLOUR = new Comparator<Device>() {
+        public int compare(Device one, Device other) {
+            String oneColour = one.colour;
+            String otherColour = other.colour;
+            return oneColour.compareTo(otherColour);
+        }
+    };
+
+    public static Comparator<Device> COMPARE_BY_PRICE = new Comparator<Device>() {
+        public int compare(Device one, Device other) {
+            String onePrice = one.price.toString();
+            String otherPrice = other.price.toString();
+            return onePrice.compareTo(otherPrice);
+        }
+    };
+
+    public static Comparator<Device> COMPARE_BY_PRODUCTIONDATE = new Comparator<Device>() {
+        public int compare(Device one, Device other) {
+            String oneProdDate = one.productionDate.toString();
+            String otherProdDate = other.productionDate.toString();
+            return oneProdDate.compareTo(otherProdDate);
+        }
+    };
+
+    public static Comparator<Device> COMPARE_BY_TYPE = new Comparator<Device>() {
+        public int compare(Device one, Device other) {
+            String oneType = one.type;
+            String otherType = other.type;
+            return oneType.compareTo(otherType);
+        }
+    };
+
 
     public static class Builder{
         private int id;

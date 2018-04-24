@@ -5,6 +5,7 @@ import model.Client;
 import model.ModelStorage;
 import scanner.Scanner;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -28,13 +29,19 @@ public class EditClientMenu implements BaseMenu {
 
         switch (editField) {
             case "1":
-                editFirstName(id);
+                Scanner.getInstance().printLine("---Enter new First Name---");
+                String newFirstName = Scanner.getInstance().readLine();
+                editFirstName(id, newFirstName);
                 break;
             case "2":
-                editLastName(id);
+                Scanner.getInstance().printLine("---Enter new Last Name---");
+                String newLastName = Scanner.getInstance().readLine();
+                editLastName(id, newLastName);
                 break;
             case "3":
-                editBirthDate(id);
+                Scanner.getInstance().printLine("---Enter new Birth Date---");
+                String newBirthDate = Scanner.getInstance().readLine();
+                editBirthDate(id, newBirthDate);
                 break;
         }
     }
@@ -47,9 +54,7 @@ public class EditClientMenu implements BaseMenu {
         );
     }
 
-    private void editFirstName(int id) {
-        Scanner.getInstance().printLine("---Enter new First Name---");
-        String newFirstName = Scanner.getInstance().readLine();
+    public void editFirstName(int id, String newFirstName) {
 
         ListIterator<Client> it = clients.listIterator();
         while (it.hasNext()) {
@@ -58,11 +63,10 @@ public class EditClientMenu implements BaseMenu {
                 break;
             }
         }
+
     }
 
-    private void editLastName(int id) {
-        Scanner.getInstance().printLine("---Enter new Last Name---");
-        String newLastName = Scanner.getInstance().readLine();
+    private void editLastName(int id, String newLastName) {
 
         ListIterator<Client> it = clients.listIterator();
         while (it.hasNext()) {
@@ -71,18 +75,19 @@ public class EditClientMenu implements BaseMenu {
                 break;
             }
         }
+
     }
 
-    private void editBirthDate(int id) {
-        Scanner.getInstance().printLine("---Enter new Birth Date---");
-        String newLastName = Scanner.getInstance().readLine();
+    private void editBirthDate(int id, String newBirthDate) {
+
 
         ListIterator<Client> it = clients.listIterator();
         while (it.hasNext()) {
             if (it.next().getClientId() == id) {
-                it.previous().setBirthDate(newLastName);
+                it.previous().setBirthDate(newBirthDate);
                 break;
             }
         }
+
     }
 }

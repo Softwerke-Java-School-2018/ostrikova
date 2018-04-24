@@ -22,16 +22,20 @@ public class DeleteClientMenu implements BaseMenu {
         int id = Integer.parseInt(stringId);
 
         if (clients.size() > 0) {
-            Iterator<Client> it = clients.iterator();
-            while (it.hasNext()) {
-                if (it.next().getClientId() == id) {
-                    it.remove();
-                    break;
-                }
-            }
+            deleteClient(id);
         } else {
             Scanner.getInstance().printLine("Can't be removed. List of clients is empty");
         }
 
+    }
+
+    public void deleteClient(int id){
+        Iterator<Client> it = clients.iterator();
+        while (it.hasNext()) {
+            if (it.next().getClientId() == id) {
+                it.remove();
+                break;
+            }
+        }
     }
 }

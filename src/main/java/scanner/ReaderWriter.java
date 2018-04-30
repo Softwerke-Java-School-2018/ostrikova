@@ -3,12 +3,14 @@ package scanner;
 import model.Client;
 import model.Device;
 
-public class Scanner {
+import java.util.stream.Stream;
 
-    private static Scanner instance;
+public class ReaderWriter {
+
+    private static ReaderWriter instance;
     private java.util.Scanner in;
 
-    private Scanner() {
+    private ReaderWriter() {
         in = new java.util.Scanner(System.in);
     }
 
@@ -22,16 +24,16 @@ public class Scanner {
     }
 
     public void printLine(Device device){
-        System.out.println(device);
+        printLine(device.toString());
     }
 
     public void printLine(Client client){
-        System.out.println(client);
+        printLine(client.toString());
     }
 
-    public static Scanner getInstance() {
+    public static ReaderWriter getInstance() {
         if (instance == null) {
-            instance = new Scanner();
+            instance = new ReaderWriter();
         }
         return instance;
     }

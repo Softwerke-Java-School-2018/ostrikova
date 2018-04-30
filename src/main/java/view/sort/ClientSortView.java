@@ -2,28 +2,31 @@ package view.sort;
 
 import menu.StartMenu;
 import model.Client;
-import scanner.Scanner;
+import model.Device;
+import model.ModelStorage;
+import scanner.ReaderWriter;
 import view.BaseView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ClientSortView implements BaseView {
     private StartMenu startMenu;
 
-    public ClientSortView(StartMenu startMenu){
+    public ClientSortView(StartMenu startMenu) {
         this.startMenu = startMenu;
     }
 
     @Override
     public void show() {
-        Scanner.getInstance().printLine("Sorted list\n");
+        ReaderWriter.getInstance().printLine("Sorted list\n");
     }
 
-    public void printSortedClients(List<Client> clients){
-        Scanner.getInstance().printLine("---Sorted device's list---");
+    public void printSortedClients(Stream<Client> clientsStream) {
+        ReaderWriter.getInstance().printLine("---Sorted device's list---");
 
-        for (Client client: clients) {
-            Scanner.getInstance().printLine(client);
-        }
+        clientsStream.forEach(client -> ReaderWriter.getInstance().printLine(client));
     }
 }

@@ -1,7 +1,6 @@
 package menu;
 
-import model.ModelStorage;
-import scanner.Scanner;
+import scanner.ReaderWriter;
 import view.BaseView;
 import view.ExitView;
 
@@ -9,32 +8,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StartMenu {
+
     private boolean isExit = false;
+
     private List<BaseMenu> entries = new ArrayList<>();
     private List<BaseView> views = new ArrayList<>();
+
     private BootstrapMenu bootstrapMenu = new BootstrapMenu(entries, views, this);
-    private ModelStorage modelStorage = new ModelStorage();
 
     public StartMenu(){
-        entries.add(new BaseMenu() {
-            @Override
-            public void run() {
-                isExit = true;
-            }
-        });
+        entries.add(() -> isExit = true);
         views.add(new ExitView(this));
     }
 
     public void start() {
-        bootstrapMenu.fillMenu(modelStorage);
+
+        bootstrapMenu.fillMenu();
 
         while (!isExit) {
             printMenu();
 
-            String line = Scanner.getInstance().readLine();
+            String line = ReaderWriter.getInstance().readLine();
             int choice = Integer.parseInt(line);
+
             BaseMenu menu = entries.get(choice - 1);
             BaseView view = views.get(choice - 1);
+
             menu.run();
             view.show();
 
@@ -42,7 +41,7 @@ public class StartMenu {
     }
 
     private void printMenu() {
-        Scanner.getInstance().printLine(
+        ReaderWriter.getInstance().printLine(
                 "---Select the option---\n" +
                         "1. Exit\n" +
                         "2. Add new device\n" +

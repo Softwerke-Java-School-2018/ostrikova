@@ -1,8 +1,7 @@
-package person;
+package client;
 
-import menu.client.EditClientMenu;
 import model.Client;
-import model.ModelStorage;
+import storage.ClientModelStorage;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -11,18 +10,15 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UpdateClientTest {
-    private static ModelStorage modelStorage;
-    private static EditClientMenu editClientMenu;
     private static List<Client> clients;
     private static Client client;;
 
 
     @BeforeClass
     public static void initStorage(){
-        modelStorage = new ModelStorage();
-        editClientMenu = new EditClientMenu(modelStorage);
         clients = new ArrayList<>();
     }
 
@@ -30,19 +26,25 @@ public class UpdateClientTest {
     public void addClient(){
         LocalDate birthDate = LocalDate.parse("1998-01-22");
 
-        client = new Client.Builder(0)
+        client = new Client.Builder()
                 .setFirstName("Иван")
                 .setLastName("Иванов")
                 .setBirthDate(birthDate)
                 .build();
 
-        modelStorage.addClient(client);
+        ClientModelStorage.getInstance().addClient(client);
     }
+
     @Test
     public void updateClientTest(){
-        editClientMenu.editFirstName(0, "Смирнов");
+        ClientModelStorage.getInstance().editFirstName(0, "Смирнов");
 
-        String editClient = modelStorage.getClients().get(0).getFirstName();
+        List<Client> clientList = ClientModelStorage
+                .getInstance()
+                .getStreamClients()
+                .collect(Collectors.toList());
+
+        String editClient = clientList.get(0).getFirstName();
         Assert.assertNotEquals("Иванов", editClient);
         Assert.assertEquals("Смирнов", editClient);
     }

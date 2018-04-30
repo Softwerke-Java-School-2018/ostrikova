@@ -1,7 +1,7 @@
 package view.device;
 
 import menu.StartMenu;
-import scanner.Scanner;
+import scanner.ReaderWriter;
 import view.BaseView;
 
 public class DeleteDeviceView implements BaseView{
@@ -13,7 +13,7 @@ public class DeleteDeviceView implements BaseView{
 
     @Override
     public void show() {
-        Scanner.getInstance().printLine("Device deleted\n");
+        ReaderWriter.getInstance().printLine("Device deleted\n");
     }
 
 }

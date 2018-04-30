@@ -2,60 +2,86 @@ package menu.sort;
 
 import menu.BaseMenu;
 import model.Client;
-import model.ModelStorage;
-import scanner.Scanner;
+import storage.ClientModelStorage;
+import scanner.ReaderWriter;
 import view.sort.ClientSortView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
 public class ClientSortMenu implements BaseMenu {
-    private ModelStorage modelStorage;
-    private ArrayList<Client> clientList;
+
+    private Stream<Client> clientListStream;
+    private Stream<Client> sortedClientStream;
+
     private ClientSortView clientSortView;
 
-    public ClientSortMenu(ModelStorage modelStorage, ClientSortView clientSortView) {
+    public ClientSortMenu(ClientSortView clientSortView) {
         this.clientSortView = clientSortView;
-        this.modelStorage = modelStorage;
     }
 
     @Override
     public void run() {
-        this.clientList = modelStorage
-                .getStreamClients()
-                .collect(Collectors.toCollection(ArrayList::new));
 
-        Scanner.getInstance().printLine("---Select the field you want to sort by---");
+        this.clientListStream = ClientModelStorage
+                .getInstance()
+                .getStreamClients();
+
+        ReaderWriter.getInstance().printLine("---Select the field you want to sort by---");
         showFields();
 
-        String field = Scanner.getInstance().readLine();
+        String field = ReaderWriter.getInstance().readLine();
 
         switch (field) {
             case "1":
-                Collections.sort(clientList, Client.COMPARE_BY_FIRSTNAME);
+                sortedClientStream = clientListStream.sorted(this.COMPARE_BY_FIRSTNAME);
                 break;
             case "2":
-                Collections.sort(clientList, Client.COMPARE_BY_LASTNAME);
+                sortedClientStream = clientListStream.sorted(this.COMPARE_BY_LASTNAME);
                 break;
             case "3":
-                Collections.sort(clientList, Client.COMPARE_BY_BIRTHDATE);
+                sortedClientStream = clientListStream.sorted(this.COMPARE_BY_BIRTHDATE);
                 break;
             case "4":
-                Collections.sort(clientList, Client.COMPARE_BY_ID);
+                sortedClientStream = clientListStream.sorted(this.COMPARE_BY_ID);
                 break;
         }
 
-        clientSortView.printSortedClients(clientList);
+        clientSortView.printSortedClients(sortedClientStream);
 
     }
 
     private void showFields() {
-        Scanner.getInstance().printLine(
+        ReaderWriter.getInstance().printLine(
                 "1. First Name\n" +
                         "2. Last Name\n" +
                         "3. Date of birth\n" +
                         "4. Id\n"
         );
     }
+
+    private Comparator<Client> COMPARE_BY_ID = (one, other) -> {
+        String oneId = String.valueOf(one.getClientId());
+        String otherId = String.valueOf(other.getClientId());
+        return oneId.compareTo(otherId);
+    };
+
+    private Comparator<Client> COMPARE_BY_FIRSTNAME = (one, other) -> {
+        String oneFirstName = one.getFirstName();
+        String otherFirstName = other.getFirstName();
+        return oneFirstName.compareTo(otherFirstName);
+    };
+
+    private Comparator<Client> COMPARE_BY_LASTNAME = (one, other) -> {
+        String oneLastName = one.getLastName();
+        String otherLastName = other.getLastName();
+        return oneLastName.compareTo(otherLastName);
+    };
+
+    private Comparator<Client> COMPARE_BY_BIRTHDATE = (one, other) -> {
+        String oneBirthDate = one.toString();
+        String otherBirthDate = other.getBirthDate().toString();
+        return oneBirthDate.compareTo(otherBirthDate);
+    };
+
 }

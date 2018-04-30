@@ -1,50 +1,53 @@
 package menu.device;
 
 import menu.BaseMenu;
-import model.Device;
-import model.ModelStorage;
-import scanner.Scanner;
-
-import java.util.List;
-import java.util.ListIterator;
-
+import storage.DeviceModelStorage;
+import scanner.ReaderWriter;
 
 public class EditDeviceMenu implements BaseMenu {
-    private List<Device> devices;
-
-    public EditDeviceMenu(ModelStorage modelStorage) {
-        this.devices = modelStorage.getDevices();
-    }
 
     @Override
     public void run() {
-        Scanner.getInstance().printLine("---Enter the id of editing device---");
-        String stringId = Scanner.getInstance().readLine();
+
+        ReaderWriter.getInstance().printLine("---Enter the id of editing device---");
+        String stringId = ReaderWriter.getInstance().readLine();
         int id = Integer.parseInt(stringId);
 
-        Scanner.getInstance().printLine("---Select the edit field---");
+        ReaderWriter.getInstance().printLine("---Select the edit field---");
         showFields();
 
-        String editField = Scanner.getInstance().readLine();
+        String editField = ReaderWriter.getInstance().readLine();
 
         switch (editField){
             case "1":
-                editManufacturer(id);
+                ReaderWriter.getInstance().printLine("---Enter new manufacturer---");
+                String newManufacturer = ReaderWriter.getInstance().readLine();
+                DeviceModelStorage.getInstance().editManufacturer(id, newManufacturer);
                 break;
             case "2":
-                editModel(id);
+                ReaderWriter.getInstance().printLine("---Enter new model---");
+                String newModel = ReaderWriter.getInstance().readLine();
+                DeviceModelStorage.getInstance().editModel(id, newModel);
                 break;
             case "3":
-                editType(id);
+                ReaderWriter.getInstance().printLine("---Enter new type---");
+                String newType = ReaderWriter.getInstance().readLine();
+                DeviceModelStorage.getInstance().editType(id, newType);
                 break;
             case "4":
-                editColour(id);
+                ReaderWriter.getInstance().printLine("---Enter new colour---");
+                String newColour = ReaderWriter.getInstance().readLine();
+                DeviceModelStorage.getInstance().editColour(id, newColour);
                 break;
             case "5":
-                editProductionDate(id);
+                ReaderWriter.getInstance().printLine("---Enter new production date---");
+                String newProdDate = ReaderWriter.getInstance().readLine();
+                DeviceModelStorage.getInstance().editProductionDate(id, newProdDate);
                 break;
             case "6":
-                editPrice(id);
+                ReaderWriter.getInstance().printLine("---Enter new price---");
+                String newPrice = ReaderWriter.getInstance().readLine();
+                DeviceModelStorage.getInstance().editPrice(id, newPrice);
                 break;
         }
 
@@ -52,7 +55,7 @@ public class EditDeviceMenu implements BaseMenu {
     }
 
     private void showFields() {
-        Scanner.getInstance().printLine(
+        ReaderWriter.getInstance().printLine(
                 "1. Manufacturer\n" +
                         "2. Model\n" +
                         "3. Type\n" +
@@ -63,81 +66,4 @@ public class EditDeviceMenu implements BaseMenu {
         );
     }
 
-    private void editManufacturer(int id){
-        Scanner.getInstance().printLine("---Enter new manufacturer---");
-        String newManufacturer = Scanner.getInstance().readLine();
-
-        ListIterator<Device> it = devices.listIterator();
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setManufacturer(newManufacturer);
-                break;
-            }
-        }
-    }
-
-    private void editModel(int id){
-        Scanner.getInstance().printLine("---Enter new model---");
-        String newModel = Scanner.getInstance().readLine();
-
-        ListIterator<Device> it = devices.listIterator();
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setModel(newModel);
-                break;
-            }
-        }
-    }
-
-    private void editType(int id){
-        Scanner.getInstance().printLine("---Enter new type---");
-        String newType = Scanner.getInstance().readLine();
-
-        ListIterator<Device> it = devices.listIterator();
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setType(newType);
-                break;
-            }
-        }
-    }
-
-    private void editColour(int id){
-        Scanner.getInstance().printLine("---Enter new colour---");
-        String newColour = Scanner.getInstance().readLine();
-
-        ListIterator<Device> it = devices.listIterator();
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setColour(newColour);
-                break;
-            }
-        }
-    }
-
-    private void editProductionDate(int id){
-        Scanner.getInstance().printLine("---Enter new production date---");
-        String newProdDate = Scanner.getInstance().readLine();
-
-        ListIterator<Device> it = devices.listIterator();
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setProductionDate(newProdDate);
-                break;
-            }
-        }
-    }
-
-    private void editPrice(int id){
-        Scanner.getInstance().printLine("---Enter new price---");
-        String newPrice = Scanner.getInstance().readLine();
-
-        ListIterator<Device> it = devices.listIterator();
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setPrice(newPrice);
-                break;
-            }
-        }
-    }
 }

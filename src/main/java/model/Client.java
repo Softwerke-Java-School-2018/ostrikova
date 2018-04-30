@@ -1,15 +1,23 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.Comparator;
 
 public class Client {
+    private static int id = 0;
+
     private int clientId;
+
     private String firstName;
     private String lastName;
+
     private LocalDate birthDate;
 
-    private Client(){
+    private Client(Builder builder){
+        this.clientId = id++;
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.birthDate = builder.birthDate;
+
     }
 
     public int getClientId() {
@@ -22,6 +30,10 @@ public class Client {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
 
@@ -37,53 +49,24 @@ public class Client {
         this.birthDate = LocalDate.parse(birthDate);
     }
 
+
     @Override
     public String toString(){
         return this.clientId + " " + this.firstName
                 + " " + this.lastName + " " + this.birthDate;
     }
 
-    public static Comparator<Client> COMPARE_BY_ID = new Comparator<Client>() {
-        public int compare(Client one, Client other) {
-            String oneId = String.valueOf(one.clientId);
-            String otherId = String.valueOf(other.clientId);
-            return oneId.compareTo(otherId);
-        }
-    };
-
-    public static Comparator<Client> COMPARE_BY_FIRSTNAME = new Comparator<Client>() {
-        public int compare(Client one, Client other) {
-            String oneFirstName = one.firstName;
-            String otherFirstName = other.firstName;
-            return oneFirstName.compareTo(otherFirstName);
-        }
-    };
-
-    public static Comparator<Client> COMPARE_BY_LASTNAME = new Comparator<Client>() {
-        public int compare(Client one, Client other) {
-            String oneLastName = one.lastName;
-            String otherLastName = other.lastName;
-            return oneLastName.compareTo(otherLastName);
-        }
-    };
-
-    public static Comparator<Client> COMPARE_BY_BIRTHDATE = new Comparator<Client>() {
-        public int compare(Client one, Client other) {
-            String oneBirthDate = one.birthDate.toString();
-            String otherBirthDate = other.birthDate.toString();
-            return oneBirthDate.compareTo(otherBirthDate);
-        }
-    };
-
 
     public static class Builder{
         private int clientId;
+
         private String firstName;
         private String lastName;
+
         private LocalDate birthDate;
 
-        public Builder(int clientId){
-            this.clientId = clientId;
+        public Builder(){
+
         }
 
         public Builder setFirstName(String firstName){
@@ -102,13 +85,8 @@ public class Client {
         }
 
         public Client build(){
-            Client client = new Client();
-            client.clientId = this.clientId;
-            client.firstName = this.firstName;
-            client.lastName = this.lastName;
-            client.birthDate = this.birthDate;
 
-            return client;
+            return new Client(this);
         }
     }
 

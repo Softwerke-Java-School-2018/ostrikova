@@ -1,7 +1,7 @@
 package view.device;
 
 import menu.StartMenu;
-import scanner.Scanner;
+import scanner.ReaderWriter;
 import view.BaseView;
 
 public class EditDeviceView implements BaseView {
@@ -13,6 +13,6 @@ public class EditDeviceView implements BaseView {
 
     @Override
     public void show() {
-        Scanner.getInstance().printLine("Device edited successfully\n");
+        ReaderWriter.getInstance().printLine("Device edited successfully\n");
     }
 }

@@ -9,7 +9,6 @@ import menu.device.EditDeviceMenu;
 import menu.purchase.AddPurchaseMenu;
 import menu.sort.ClientSortMenu;
 import menu.sort.DeviceSortMenu;
-import model.ModelStorage;
 import view.BaseView;
 import view.client.AddClientView;
 import view.client.DeleteClientView;
@@ -24,8 +23,10 @@ import view.sort.DeviceSortView;
 import java.util.List;
 
 public class BootstrapMenu {
+
     private List<BaseMenu> entries;
     private List<BaseView> views;
+
     private StartMenu startMenu;
 
     public BootstrapMenu(List<BaseMenu> entries, List<BaseView> views, StartMenu startMenu){
@@ -34,49 +35,49 @@ public class BootstrapMenu {
         this.startMenu = startMenu;
     }
 
-    public void fillMenu(ModelStorage modelStorage){
-        fillDeviceMenu(modelStorage);
-        fillClientMenu(modelStorage);
-        fillPurchaseMenu(modelStorage);
-        fillSortMenu(modelStorage);
+    public void fillMenu(){
+        fillDeviceMenu();
+        fillClientMenu();
+        fillPurchaseMenu();
+        fillSortMenu();
     }
 
-    private void fillDeviceMenu(ModelStorage modelStorage){
-        entries.add(new AddDeviceMenu(modelStorage));
+    private void fillDeviceMenu(){
+        entries.add(new AddDeviceMenu());
         views.add(new AddDeviceView(startMenu));
 
-        entries.add(new DeleteDeviceMenu(modelStorage));
+        entries.add(new DeleteDeviceMenu());
         views.add(new DeleteDeviceView(startMenu));
 
-        entries.add(new EditDeviceMenu(modelStorage));
+        entries.add(new EditDeviceMenu());
         views.add(new EditDeviceView(startMenu));
     }
 
-    private void fillClientMenu(ModelStorage modelStorage){
-        entries.add(new AddClientMenu(modelStorage));
+    private void fillClientMenu(){
+        entries.add(new AddClientMenu());
         views.add(new AddClientView(startMenu));
 
-        entries.add(new DeleteClientMenu(modelStorage));
+        entries.add(new DeleteClientMenu());
         views.add(new DeleteClientView(startMenu));
 
-        entries.add(new EditClientMenu(modelStorage));
+        entries.add(new EditClientMenu());
         views.add(new EditClientView(startMenu));
     }
 
-    private void fillPurchaseMenu(ModelStorage modelStorage){
+    private void fillPurchaseMenu(){
         AddPurchaseView addPurchaseView = new AddPurchaseView(startMenu);
         views.add(addPurchaseView);
-        entries.add(new AddPurchaseMenu(modelStorage, addPurchaseView));
+        entries.add(new AddPurchaseMenu(addPurchaseView));
 
     }
 
-    private void fillSortMenu(ModelStorage modelStorage){
+    private void fillSortMenu(){
         DeviceSortView deviceSortView = new DeviceSortView(startMenu);
         views.add(deviceSortView);
-        entries.add(new DeviceSortMenu(modelStorage, deviceSortView));
+        entries.add(new DeviceSortMenu(deviceSortView));
 
         ClientSortView clientSortView = new ClientSortView(startMenu);
         views.add(clientSortView);
-        entries.add(new ClientSortMenu(modelStorage, clientSortView));
+        entries.add(new ClientSortMenu(clientSortView));
     }
 }

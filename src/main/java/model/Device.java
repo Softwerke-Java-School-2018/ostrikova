@@ -2,23 +2,34 @@ package model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Comparator;
 
 public class Device {
-    private int id;
+    private static int id = 0;
+
+    private int deviceId;
+
     private String manufacturer;
     private String model;
     private String type;
     private String colour;
+
     private LocalDate productionDate;
+
     private BigDecimal price;
 
-    private Device(){
+    private Device(Builder builder){
+        this.deviceId = id++;
+        this.price = builder.price;
+        this.colour = builder.colour;
+        this.manufacturer = builder.manufacturer;
+        this.model = builder.model;
+        this.type = builder.type;
+        this.productionDate = builder.productionDate;
 
     }
 
     public int getId() {
-        return id;
+        return deviceId;
     }
 
     public String getManufacturer() {
@@ -32,6 +43,19 @@ public class Device {
     public BigDecimal getPrice() {
         return price;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public LocalDate getProductionDate() {
+        return productionDate;
+    }
+
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
@@ -59,80 +83,29 @@ public class Device {
 
     @Override
     public String toString(){
-        return this.id + " " + this.manufacturer + " "
+        return this.deviceId + " " + this.manufacturer + " "
                 + this.model + " " + this.type + " "
                 + this.colour + " " + this.productionDate + " "
                 + this.price;
     }
 
-    public static Comparator<Device> COMPARE_BY_ID = new Comparator<Device>() {
-        public int compare(Device one, Device other) {
-            String oneId = String.valueOf(one.getId());
-            String otherId = String.valueOf(other.getId());
-            return oneId.compareTo(otherId);
-        }
-    };
 
-    public static Comparator<Device> COMPARE_BY_MANUFACTURER = new Comparator<Device>() {
-        public int compare(Device one, Device other) {
-            String oneManufacturer = one.getManufacturer();
-            String otherManufacturer = other.getManufacturer();
-            return oneManufacturer.compareTo(otherManufacturer);
-        }
-    };
-
-    public static Comparator<Device> COMPARE_BY_MODEL = new Comparator<Device>() {
-        public int compare(Device one, Device other) {
-            String oneModel = one.getModel();
-            String otherModel = other.getModel();
-            return oneModel.compareTo(otherModel);
-        }
-    };
-
-    public static Comparator<Device> COMPARE_BY_COLOUR = new Comparator<Device>() {
-        public int compare(Device one, Device other) {
-            String oneColour = one.colour;
-            String otherColour = other.colour;
-            return oneColour.compareTo(otherColour);
-        }
-    };
-
-    public static Comparator<Device> COMPARE_BY_PRICE = new Comparator<Device>() {
-        public int compare(Device one, Device other) {
-            String onePrice = one.price.toString();
-            String otherPrice = other.price.toString();
-            return onePrice.compareTo(otherPrice);
-        }
-    };
-
-    public static Comparator<Device> COMPARE_BY_PRODUCTIONDATE = new Comparator<Device>() {
-        public int compare(Device one, Device other) {
-            String oneProdDate = one.productionDate.toString();
-            String otherProdDate = other.productionDate.toString();
-            return oneProdDate.compareTo(otherProdDate);
-        }
-    };
-
-    public static Comparator<Device> COMPARE_BY_TYPE = new Comparator<Device>() {
-        public int compare(Device one, Device other) {
-            String oneType = one.type;
-            String otherType = other.type;
-            return oneType.compareTo(otherType);
-        }
-    };
 
 
     public static class Builder{
         private int id;
+
         private String manufacturer;
         private String model;
         private String type;
         private String colour;
+
         private LocalDate productionDate;
+
         private BigDecimal price;
 
-        public Builder(int id){
-            this.id = id;
+        public Builder(){
+
         }
 
         public Builder setManufacturer(String manufacturer){
@@ -166,16 +139,7 @@ public class Device {
         }
 
         public Device build(){
-            Device device = new Device();
-            device.id = this.id;
-            device.price = this.price;
-            device.colour = this.colour;
-            device.manufacturer = this.manufacturer;
-            device.model = this.model;
-            device.type = this.type;
-            device.productionDate = this.productionDate;
-
-            return device;
+            return new Device(this);
         }
 
 

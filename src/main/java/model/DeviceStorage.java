@@ -1,14 +1,19 @@
 package model;
 
+import model.Device;
+
 import java.math.BigDecimal;
 
-public class DeviceModels {
+public class DeviceStorage {
+
     private String manufacturer;
     private String model;
+
     private BigDecimal price = new BigDecimal(0);
+
     private int deviceCount = 0;
 
-    public DeviceModels(Device device){
+    public DeviceStorage(Device device){
         this.manufacturer = device.getManufacturer();
         this.model = device.getModel();
         this.price = this.price.add(device.getPrice());

@@ -10,14 +10,14 @@ public class Purchase {
     private int clientId;
     private LocalDate currentDate;
     private BigDecimal totalCost = new BigDecimal(0);
-    private List<DeviceModels> deviceModels = new ArrayList<>();
+    private List<DeviceStorage> deviceModels = new ArrayList<>();
 
-    public Purchase(Client client, Device device, LocalDate today){
+    public Purchase(Client client, Device device){
         this.clientId = client.getClientId();
         this.totalCost = this.totalCost.add(device.getPrice());
-        this.currentDate = today;
-        DeviceModels newDeviceModels = new DeviceModels(device);
-        deviceModels.add(newDeviceModels);
+        this.currentDate = LocalDate.now();
+        DeviceStorage newDeviceStorage = new DeviceStorage(device);
+        deviceModels.add(newDeviceStorage);
     }
 
     public void setTotalCost(BigDecimal price) {
@@ -36,12 +36,12 @@ public class Purchase {
         return currentDate;
     }
 
-    public Stream<DeviceModels> getStreamDeviceModelsList(){
+    public Stream<DeviceStorage> getStreamDeviceModelsList(){
         return deviceModels.stream();
     }
 
     public void addDeviceModelsList(Device device){
-        DeviceModels newDeviceModels = new DeviceModels(device);
-        this.deviceModels.add(newDeviceModels);
+        DeviceStorage newDeviceStorage = new DeviceStorage(device);
+        this.deviceModels.add(newDeviceStorage);
     }
 }

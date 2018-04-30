@@ -1,4 +1,4 @@
-package person;
+package client;
 
 import model.Client;
 import org.junit.Assert;
@@ -7,11 +7,12 @@ import org.junit.Test;
 import java.time.LocalDate;
 
 public class CreateClientTest {
+
     @Test
     public void createPersonTest(){
         LocalDate birthDate = LocalDate.parse("1998-01-22");
 
-        Client client = new Client.Builder(0)
+        Client client = new Client.Builder()
                 .setFirstName("Иван")
                 .setLastName("Иванов")
                 .setBirthDate(birthDate)

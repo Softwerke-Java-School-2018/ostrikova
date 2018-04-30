@@ -1,8 +1,7 @@
-package person;
+package client;
 
-import menu.client.DeleteClientMenu;
 import model.Client;
-import model.ModelStorage;
+import storage.ClientModelStorage;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,17 +9,14 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DeleteClientTest {
-    private static ModelStorage modelStorage;
-    private static DeleteClientMenu deleteClientMenu;
     private static List<Client> clients;
 
 
     @BeforeClass
     public static void initStorage(){
-        modelStorage = new ModelStorage();
-        deleteClientMenu = new DeleteClientMenu(modelStorage);
         clients = new ArrayList<>();
     }
 
@@ -28,20 +24,24 @@ public class DeleteClientTest {
     public void addClient(){
         LocalDate birthDate = LocalDate.parse("1998-01-22");
 
-        Client client = new Client.Builder(0)
+        Client client = new Client.Builder()
                 .setFirstName("Иван")
                 .setLastName("Иванов")
                 .setBirthDate(birthDate)
                 .build();
 
-        modelStorage.addClient(client);
+        ClientModelStorage.getInstance().addClient(client);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void deleteClientTest(){
-        deleteClientMenu.deleteClient(0);
+        ClientModelStorage.getInstance().deleteClient(0);
 
-        List<Client> deletedClient = modelStorage.getClients();
+        List<Client> deletedClient = ClientModelStorage
+                .getInstance()
+                .getStreamClients()
+                .collect(Collectors.toList());
+
         deletedClient.get(0);
     }
 }

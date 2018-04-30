@@ -9,6 +9,7 @@ import menu.device.EditDeviceMenu;
 import menu.purchase.AddPurchaseMenu;
 import menu.sort.ClientSortMenu;
 import menu.sort.DeviceSortMenu;
+import menu.sort.PurchaseSortMenu;
 import view.BaseView;
 import view.client.AddClientView;
 import view.client.DeleteClientView;
@@ -19,6 +20,7 @@ import view.device.EditDeviceView;
 import view.purchase.AddPurchaseView;
 import view.sort.ClientSortView;
 import view.sort.DeviceSortView;
+import view.sort.PurchaseSortView;
 
 import java.util.List;
 
@@ -79,5 +81,9 @@ public class BootstrapMenu {
         ClientSortView clientSortView = new ClientSortView(startMenu);
         views.add(clientSortView);
         entries.add(new ClientSortMenu(clientSortView));
+
+        PurchaseSortView purchaseSortView = new PurchaseSortView(startMenu);
+        views.add(purchaseSortView);
+        entries.add(new PurchaseSortMenu(purchaseSortView));
     }
 }

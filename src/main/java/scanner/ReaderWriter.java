@@ -2,6 +2,7 @@ package scanner;
 
 import model.Client;
 import model.Device;
+import model.Purchase;
 
 import java.util.stream.Stream;
 
@@ -29,6 +30,10 @@ public class ReaderWriter {
 
     public void printLine(Client client){
         printLine(client.toString());
+    }
+
+    public void printLine(Purchase purchase){
+        printLine(purchase.toString());
     }
 
     public static ReaderWriter getInstance() {

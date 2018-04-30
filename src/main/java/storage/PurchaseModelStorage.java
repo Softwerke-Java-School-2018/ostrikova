@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PurchaseModelStorage {
 
@@ -24,6 +25,10 @@ public class PurchaseModelStorage {
             instance = new PurchaseModelStorage();
         }
         return instance;
+    }
+
+    public Stream<Purchase> getStreamPurchases() {
+        return purchases.stream();
     }
 
     public void addPurchase(int clientId, int deviceId) {

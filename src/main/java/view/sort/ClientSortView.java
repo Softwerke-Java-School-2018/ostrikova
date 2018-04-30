@@ -2,14 +2,9 @@ package view.sort;
 
 import menu.StartMenu;
 import model.Client;
-import model.Device;
-import model.ModelStorage;
 import scanner.ReaderWriter;
 import view.BaseView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ClientSortView implements BaseView {

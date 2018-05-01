@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class DeviceSortView implements BaseView {
+public class SortDeviceView implements BaseView {
     private StartMenu startMenu;
 
-    public DeviceSortView(StartMenu startMenu) {
+    public SortDeviceView(StartMenu startMenu) {
         this.startMenu = startMenu;
     }
 

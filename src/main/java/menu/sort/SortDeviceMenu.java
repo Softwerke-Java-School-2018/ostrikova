@@ -4,20 +4,20 @@ import menu.BaseMenu;
 import model.Device;
 import storage.DeviceModelStorage;
 import scanner.ReaderWriter;
-import view.sort.DeviceSortView;
+import view.sort.SortDeviceView;
 
 import java.util.Comparator;
 import java.util.stream.Stream;
 
-public class DeviceSortMenu implements BaseMenu {
+public class SortDeviceMenu implements BaseMenu {
 
     private Stream<Device> deviceListStream;
     private Stream<Device> sortedDeviceStream;
 
-    private DeviceSortView deviceSortView;
+    private SortDeviceView sortDeviceView;
 
-    public DeviceSortMenu(DeviceSortView deviceSortView) {
-        this.deviceSortView = deviceSortView;
+    public SortDeviceMenu(SortDeviceView sortDeviceView) {
+        this.sortDeviceView = sortDeviceView;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class DeviceSortMenu implements BaseMenu {
                 break;
         }
 
-        deviceSortView.printSortedDevices(sortedDeviceStream);
+        sortDeviceView.printSortedDevices(sortedDeviceStream);
 
     }
 

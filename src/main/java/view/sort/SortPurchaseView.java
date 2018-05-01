@@ -7,10 +7,10 @@ import view.BaseView;
 
 import java.util.stream.Stream;
 
-public class PurchaseSortView implements BaseView {
+public class SortPurchaseView implements BaseView {
     private StartMenu startMenu;
 
-    public PurchaseSortView(StartMenu startMenu) {
+    public SortPurchaseView(StartMenu startMenu) {
         this.startMenu = startMenu;
     }
 

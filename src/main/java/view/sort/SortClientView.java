@@ -7,10 +7,10 @@ import view.BaseView;
 
 import java.util.stream.Stream;
 
-public class ClientSortView implements BaseView {
+public class SortClientView implements BaseView {
     private StartMenu startMenu;
 
-    public ClientSortView(StartMenu startMenu) {
+    public SortClientView(StartMenu startMenu) {
         this.startMenu = startMenu;
     }
 
@@ -20,7 +20,7 @@ public class ClientSortView implements BaseView {
     }
 
     public void printSortedClients(Stream<Client> clientsStream) {
-        ReaderWriter.getInstance().printLine("---Sorted device's list---");
+        ReaderWriter.getInstance().printLine("---Sorted client's list---");
 
         clientsStream.forEach(client -> ReaderWriter.getInstance().printLine(client));
     }

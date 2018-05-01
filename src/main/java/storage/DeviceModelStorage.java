@@ -1,8 +1,11 @@
 package storage;
 
+import model.Client;
 import model.Device;
 import scanner.ReaderWriter;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -142,6 +145,41 @@ public class DeviceModelStorage {
         }
 
         return rightDevice;
+    }
+
+    public Stream<Device> findDeviceStreamById(int id){
+        return devices.stream()
+                .filter(clients -> clients.getId() == id);
+    }
+
+    public Stream<Device> findDeviceStreamByManufacturer(String manufacturer){
+        return devices.stream()
+                .filter(clients -> manufacturer.equalsIgnoreCase(clients.getManufacturer()));
+    }
+
+    public Stream<Device> findDeviceStreamByModel(String model){
+        return devices.stream()
+                .filter(clients -> model.equalsIgnoreCase(clients.getModel()));
+    }
+
+    public Stream<Device> findDeviceStreamByColour(String colour){
+        return devices.stream()
+                .filter(clients -> colour.equalsIgnoreCase(clients.getColour()));
+    }
+
+    public Stream<Device> findDeviceStreamByType(String type){
+        return devices.stream()
+                .filter(clients -> type.equalsIgnoreCase(clients.getType()));
+    }
+
+    public Stream<Device> findDeviceStreamByProdDate(LocalDate prodDate){
+        return devices.stream()
+                .filter(clients -> prodDate.equals(clients.getProductionDate()));
+    }
+
+    public Stream<Device> findDeviceStreamByPrice(BigDecimal price){
+        return devices.stream()
+                .filter(clients -> price.compareTo(clients.getPrice()) == 0);
     }
 
 }

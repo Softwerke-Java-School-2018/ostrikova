@@ -3,6 +3,7 @@ package storage;
 import model.Client;
 import scanner.ReaderWriter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -102,6 +103,26 @@ public class ClientModelStorage {
         }
 
         return rightClient;
+    }
+
+    public Stream<Client> findClientStreamById(int id) {
+        return clients.stream()
+                .filter(clients -> clients.getClientId() == id);
+    }
+
+    public Stream<Client> findClientStreamByFirstName(String firstName) {
+        return clients.stream()
+                .filter(clients -> firstName.equalsIgnoreCase(clients.getFirstName()));
+    }
+
+    public Stream<Client> findClientStreamByLastName(String lastName) {
+        return clients.stream()
+                .filter(clients -> lastName.equalsIgnoreCase(clients.getLastName()));
+    }
+
+    public Stream<Client> findClientStreamByBirthDate(LocalDate birthDate) {
+        return clients.stream()
+                .filter(clients -> birthDate.equals(clients.getBirthDate()));
     }
 
 }

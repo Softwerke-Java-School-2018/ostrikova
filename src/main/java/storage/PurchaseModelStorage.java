@@ -109,4 +109,14 @@ public class PurchaseModelStorage {
         return false;
     }
 
+    public Stream<Purchase> findPurchaseStreamById(int id) {
+        return purchases.stream()
+                .filter(purchases -> purchases.getClientId() == id);
+    }
+
+    public Stream<Purchase> findPurchaseStreamByPurchaseDate(LocalDate purchaseDate) {
+        return purchases.stream()
+                .filter(purchases -> purchaseDate.equals(purchases.getCurrentDate()));
+    }
+
 }

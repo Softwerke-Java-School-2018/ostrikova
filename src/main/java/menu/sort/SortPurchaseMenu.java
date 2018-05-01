@@ -4,20 +4,20 @@ import menu.BaseMenu;
 import model.Purchase;
 import scanner.ReaderWriter;
 import storage.PurchaseModelStorage;
-import view.sort.PurchaseSortView;
+import view.sort.SortPurchaseView;
 
 import java.util.Comparator;
 import java.util.stream.Stream;
 
-public class PurchaseSortMenu implements BaseMenu {
+public class SortPurchaseMenu implements BaseMenu {
 
     private Stream<Purchase> purchaseListStream;
     private Stream<Purchase> sortedPurchaseStream;
 
-    private PurchaseSortView purchaseSortView;
+    private SortPurchaseView sortPurchaseView;
 
-    public PurchaseSortMenu(PurchaseSortView purchaseSortView) {
-        this.purchaseSortView = purchaseSortView;
+    public SortPurchaseMenu(SortPurchaseView sortPurchaseView) {
+        this.sortPurchaseView = sortPurchaseView;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class PurchaseSortMenu implements BaseMenu {
                 break;
         }
 
-        purchaseSortView.printSortedPurchases(sortedPurchaseStream);
+        sortPurchaseView.printSortedPurchases(sortedPurchaseStream);
 
     }
 

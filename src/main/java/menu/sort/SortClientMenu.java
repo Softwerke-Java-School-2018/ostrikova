@@ -4,20 +4,20 @@ import menu.BaseMenu;
 import model.Client;
 import storage.ClientModelStorage;
 import scanner.ReaderWriter;
-import view.sort.ClientSortView;
+import view.sort.SortClientView;
 
 import java.util.Comparator;
 import java.util.stream.Stream;
 
-public class ClientSortMenu implements BaseMenu {
+public class SortClientMenu implements BaseMenu {
 
     private Stream<Client> clientListStream;
     private Stream<Client> sortedClientStream;
 
-    private ClientSortView clientSortView;
+    private SortClientView sortClientView;
 
-    public ClientSortMenu(ClientSortView clientSortView) {
-        this.clientSortView = clientSortView;
+    public SortClientMenu(SortClientView sortClientView) {
+        this.sortClientView = sortClientView;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class ClientSortMenu implements BaseMenu {
                 break;
         }
 
-        clientSortView.printSortedClients(sortedClientStream);
+        sortClientView.printSortedClients(sortedClientStream);
 
     }
 

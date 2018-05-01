@@ -53,7 +53,10 @@ public class StartMenu {
                         "8. Add purchase\n" +
                         "9. Sort devices\n" +
                         "10. Sort clients\n" +
-                        "11. Sort purchases\n"
+                        "11. Sort purchases\n" +
+                        "12. Search client\n" +
+                        "13. Search device\n" +
+                        "14. Search purchase\n"
         );
     }
 

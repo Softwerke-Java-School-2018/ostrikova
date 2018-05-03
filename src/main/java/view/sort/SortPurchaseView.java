@@ -15,8 +15,8 @@ public class SortPurchaseView implements BaseView {
     }
 
     @Override
-    public void show() {
-        ReaderWriter.getInstance().printLine("Sorted list\n");
+    public void show(String message) {
+        ReaderWriter.getInstance().printLine(message);
     }
 
     public void printSortedPurchases(Stream<Purchase> purchasesStream) {

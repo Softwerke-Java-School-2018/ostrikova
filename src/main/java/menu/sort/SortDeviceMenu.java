@@ -57,6 +57,7 @@ public class SortDeviceMenu implements BaseMenu {
         }
 
         sortDeviceView.printSortedDevices(sortedDeviceStream);
+        sortDeviceView.show("Sorted list\n");
 
     }
 

@@ -41,7 +41,7 @@ public class SearchPurchaseMenu implements BaseMenu {
         }
 
         searchPurchaseView.printFoundPurchases(foundPurchaseStream);
-
+        searchPurchaseView.show("Search was successful\n");
     }
 
     private void showFields() {

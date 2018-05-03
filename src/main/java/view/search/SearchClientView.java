@@ -15,8 +15,8 @@ public class SearchClientView implements BaseView {
     }
 
     @Override
-    public void show() {
-        ReaderWriter.getInstance().printLine("Search was successful\n");
+    public void show(String message) {
+        ReaderWriter.getInstance().printLine(message);
     }
 
     public void printFoundClients(Stream<Client> clientsStream) {

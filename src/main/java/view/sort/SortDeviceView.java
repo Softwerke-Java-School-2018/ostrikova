@@ -18,8 +18,8 @@ public class SortDeviceView implements BaseView {
     }
 
     @Override
-    public void show() {
-        ReaderWriter.getInstance().printLine("Sorted list\n");
+    public void show(String message) {
+        ReaderWriter.getInstance().printLine(message);
     }
 
     public void printSortedDevices(Stream<Device> devicesStream) {

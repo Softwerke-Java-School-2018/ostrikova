@@ -6,13 +6,14 @@ import view.BaseView;
 
 public class EditClientView implements BaseView {
     private StartMenu startMenu;
+    private String exceptionMessage = "Couldn't edit client: ";
 
     public EditClientView(StartMenu startMenu){
         this.startMenu = startMenu;
     }
 
     @Override
-    public void show() {
-        ReaderWriter.getInstance().printLine("Client edited successfully\n");
+    public void show(String message) {
+        ReaderWriter.getInstance().printLine(exceptionMessage + message);
     }
 }

@@ -15,8 +15,8 @@ public class SearchDeviceView implements BaseView {
     }
 
     @Override
-    public void show() {
-        ReaderWriter.getInstance().printLine("Search was successful\n");
+    public void show(String message) {
+        ReaderWriter.getInstance().printLine(message);
     }
 
     public void printFoundDevices(Stream<Device> devicesStream) {

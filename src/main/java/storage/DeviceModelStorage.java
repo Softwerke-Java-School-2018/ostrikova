@@ -1,5 +1,7 @@
 package storage;
 
+import exceptions.EmptyListException;
+import exceptions.FieldNotFoundException;
 import model.Client;
 import model.Device;
 import scanner.ReaderWriter;
@@ -36,7 +38,8 @@ public class DeviceModelStorage {
         return devices.stream();
     }
 
-    public void deleteDevice(int id) {
+    public void deleteDevice(int id) throws FieldNotFoundException, EmptyListException {
+        boolean isFind = false;
 
         if (!devices.isEmpty()) {
 
@@ -45,139 +48,172 @@ public class DeviceModelStorage {
             while (it.hasNext()) {
                 if (it.next().getId() == id) {
                     it.remove();
-                    break;
+                    isFind = true;
                 }
             }
 
+            if (!isFind) {
+                throw new FieldNotFoundException();
+            }
+
         } else {
-            ReaderWriter.getInstance().printLine("List of devices is empty");
+            throw new EmptyListException("List is empty\n");
         }
 
     }
 
-    public void editManufacturer(int id, String newManufacturer) {
+    public void editManufacturer(int id, String newManufacturer) throws FieldNotFoundException {
+        boolean isFind = false;
 
         ListIterator<Device> it = devices.listIterator();
 
         while (it.hasNext()) {
             if (it.next().getId() == id) {
                 it.previous().setManufacturer(newManufacturer);
-                break;
+                isFind = true;
             }
         }
 
+        if(!isFind){
+            throw new FieldNotFoundException();
+        }
     }
 
-    public void editModel(int id, String newModel) {
+    public void editModel(int id, String newModel) throws FieldNotFoundException {
+        boolean isFind = false;
 
         ListIterator<Device> it = devices.listIterator();
 
         while (it.hasNext()) {
             if (it.next().getId() == id) {
                 it.previous().setModel(newModel);
-                break;
+                isFind = true;
             }
         }
 
+        if (!isFind) {
+            throw new FieldNotFoundException();
+        }
     }
 
-    public void editType(int id, String newType) {
+    public void editType(int id, String newType) throws FieldNotFoundException {
+        boolean isFind = false;
 
         ListIterator<Device> it = devices.listIterator();
 
         while (it.hasNext()) {
             if (it.next().getId() == id) {
                 it.previous().setType(newType);
-                break;
+                isFind = true;
             }
         }
 
+        if (!isFind) {
+            throw new FieldNotFoundException();
+        }
     }
 
-    public void editColour(int id, String newColour) {
+    public void editColour(int id, String newColour) throws FieldNotFoundException {
+        boolean isFind = false;
 
         ListIterator<Device> it = devices.listIterator();
 
         while (it.hasNext()) {
             if (it.next().getId() == id) {
                 it.previous().setColour(newColour);
-                break;
+                isFind = true;
             }
         }
 
+        if (!isFind) {
+            throw new FieldNotFoundException();
+        }
     }
 
-    public void editProductionDate(int id, String newProdDate) {
+    public void editProductionDate(int id, String newProdDate) throws FieldNotFoundException {
+        boolean isFind = false;
 
         ListIterator<Device> it = devices.listIterator();
 
         while (it.hasNext()) {
             if (it.next().getId() == id) {
                 it.previous().setProductionDate(newProdDate);
-                break;
+                isFind = true;
             }
         }
 
+        if (!isFind) {
+            throw new FieldNotFoundException();
+        }
     }
 
-    public void editPrice(int id, String newPrice) {
+    public void editPrice(int id, String newPrice) throws FieldNotFoundException {
+        boolean isFind = false;
 
         ListIterator<Device> it = devices.listIterator();
 
         while (it.hasNext()) {
             if (it.next().getId() == id) {
                 it.previous().setPrice(newPrice);
-                break;
+                isFind = true;
             }
         }
 
+        if (!isFind) {
+            throw new FieldNotFoundException();
+        }
     }
 
-    public Device findDevice(int deviceId) {
+    public Device findDevice(int deviceId) throws FieldNotFoundException{
+        boolean isFind = false;
 
         Device rightDevice = null;
 
         for (Device device : devices) {
             if (device.getId() == deviceId) {
                 rightDevice = device;
-                break;
+                isFind = true;
             }
+        }
+
+        if(!isFind){
+            throw new FieldNotFoundException();
         }
 
         return rightDevice;
     }
 
-    public Stream<Device> findDeviceStreamById(int id){
+    public Stream<Device> findDeviceStreamById(int id) {
         return devices.stream()
                 .filter(clients -> clients.getId() == id);
     }
 
-    public Stream<Device> findDeviceStreamByManufacturer(String manufacturer){
+    public Stream<Device> findDeviceStreamByManufacturer(String manufacturer) {
         return devices.stream()
                 .filter(clients -> manufacturer.equalsIgnoreCase(clients.getManufacturer()));
     }
 
-    public Stream<Device> findDeviceStreamByModel(String model){
+    public Stream<Device> findDeviceStreamByModel(String model) {
         return devices.stream()
                 .filter(clients -> model.equalsIgnoreCase(clients.getModel()));
     }
 
-    public Stream<Device> findDeviceStreamByColour(String colour){
+    public Stream<Device> findDeviceStreamByColour(String colour) {
         return devices.stream()
                 .filter(clients -> colour.equalsIgnoreCase(clients.getColour()));
     }
 
-    public Stream<Device> findDeviceStreamByType(String type){
+    public Stream<Device> findDeviceStreamByType(String type) {
         return devices.stream()
                 .filter(clients -> type.equalsIgnoreCase(clients.getType()));
     }
 
-    public Stream<Device> findDeviceStreamByProdDate(LocalDate prodDate){
+    public Stream<Device> findDeviceStreamByProdDate(LocalDate prodDate) {
         return devices.stream()
                 .filter(clients -> prodDate.equals(clients.getProductionDate()));
     }
 
-    public Stream<Device> findDeviceStreamByPrice(BigDecimal price){
+    public Stream<Device> findDeviceStreamByPrice(BigDecimal price) {
         return devices.stream()
                 .filter(clients -> price.compareTo(clients.getPrice()) == 0);
     }

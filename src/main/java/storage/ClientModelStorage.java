@@ -1,5 +1,7 @@
 package storage;
 
+import exceptions.EmptyListException;
+import exceptions.FieldNotFoundException;
 import model.Client;
 import scanner.ReaderWriter;
 
@@ -34,7 +36,8 @@ public class ClientModelStorage {
         return clients.stream();
     }
 
-    public void deleteClient(int id) {
+    public void deleteClient(int id) throws FieldNotFoundException, EmptyListException {
+        boolean isFindId = false;
 
         if (!clients.isEmpty()) {
             Iterator<Client> it = clients.iterator();
@@ -42,64 +45,85 @@ public class ClientModelStorage {
             while (it.hasNext()) {
                 if (it.next().getClientId() == id) {
                     it.remove();
-                    break;
+                    isFindId = true;
                 }
             }
 
+            if(!isFindId){
+                throw new FieldNotFoundException();
+            }
+
         } else {
-            ReaderWriter.getInstance().printLine("Can't be removed. List of clients is empty");
+            throw new EmptyListException("List is empty\n");
         }
 
     }
 
-    public void editFirstName(int id, String newFirstName) {
+    public void editFirstName(int id, String newFirstName) throws FieldNotFoundException {
+        boolean isFind = false;
 
         ListIterator<Client> it = clients.listIterator();
 
         while (it.hasNext()) {
             if (it.next().getClientId() == id) {
                 it.previous().setFirstName(newFirstName);
-                break;
+                isFind = true;
             }
         }
 
+        if(!isFind){
+            throw new FieldNotFoundException();
+        }
     }
 
-    public void editLastName(int id, String newLastName) {
+    public void editLastName(int id, String newLastName) throws FieldNotFoundException {
+        boolean isFind = false;
 
         ListIterator<Client> it = clients.listIterator();
 
         while (it.hasNext()) {
             if (it.next().getClientId() == id) {
                 it.previous().setLastName(newLastName);
-                break;
+                isFind = true;
             }
         }
 
+        if(!isFind){
+            throw new FieldNotFoundException();
+        }
     }
 
-    public void editBirthDate(int id, String newBirthDate) {
+    public void editBirthDate(int id, String newBirthDate) throws FieldNotFoundException {
+        boolean isFind = false;
 
         ListIterator<Client> it = clients.listIterator();
 
         while (it.hasNext()) {
             if (it.next().getClientId() == id) {
                 it.previous().setBirthDate(newBirthDate);
-                break;
+                isFind = true;
             }
         }
 
+        if(!isFind){
+            throw new FieldNotFoundException();
+        }
     }
 
-    public Client findClient(int clientId) {
+    public Client findClient(int clientId) throws FieldNotFoundException {
+        boolean isFind = false;
 
         Client rightClient = null;
 
         for (Client client : clients) {
             if (client.getClientId() == clientId) {
                 rightClient = client;
-                break;
+                isFind = true;
             }
+        }
+
+        if(!isFind){
+            throw  new FieldNotFoundException();
         }
 
         return rightClient;

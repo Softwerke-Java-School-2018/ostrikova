@@ -4,15 +4,22 @@ import menu.BaseMenu;
 import model.Device;
 import storage.DeviceModelStorage;
 import scanner.ReaderWriter;
+import view.device.AddDeviceView;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 
 public class AddDeviceMenu implements BaseMenu {
+    private AddDeviceView addDeviceView;
+
+    public AddDeviceMenu(AddDeviceView addDeviceView){
+        this.addDeviceView = addDeviceView;
+    }
 
     @Override
-    public void run() {
+    public void run() throws DateTimeParseException {
 
         ReaderWriter.getInstance().printLine("Enter manufacturer");
         String manufacturer = ReaderWriter.getInstance().readLine();

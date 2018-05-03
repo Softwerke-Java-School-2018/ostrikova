@@ -6,14 +6,15 @@ import view.BaseView;
 
 public class AddDeviceView implements BaseView {
     private StartMenu startMenu;
+    private String exceptionMessage = "Couldn't add device: ";
 
     public AddDeviceView(StartMenu startMenu){
         this.startMenu = startMenu;
     }
 
     @Override
-    public void show() {
-        ReaderWriter.getInstance().printLine("Device added\n");
+    public void show(String message) {
+        ReaderWriter.getInstance().printLine(exceptionMessage + message);
     }
 
 }

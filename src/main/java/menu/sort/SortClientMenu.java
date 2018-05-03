@@ -48,7 +48,7 @@ public class SortClientMenu implements BaseMenu {
         }
 
         sortClientView.printSortedClients(sortedClientStream);
-
+        sortClientView.show("Sorted list\n");
     }
 
     private void showFields() {

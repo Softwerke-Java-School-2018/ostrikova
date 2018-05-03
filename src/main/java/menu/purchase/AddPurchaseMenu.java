@@ -1,5 +1,6 @@
 package menu.purchase;
 
+import exceptions.FieldNotFoundException;
 import menu.BaseMenu;
 import model.Client;
 import model.Device;
@@ -32,7 +33,11 @@ public class AddPurchaseMenu implements BaseMenu {
         String stringDeviceId = ReaderWriter.getInstance().readLine();
         int deviceId = Integer.parseInt(stringDeviceId);
 
-        PurchaseModelStorage.getInstance().addPurchase(clientId, deviceId);
+        try {
+            PurchaseModelStorage.getInstance().addPurchase(clientId, deviceId);
+        } catch (FieldNotFoundException e){
+            addPurchaseView.show("Device or Client not found\n");
+        }
     }
 
     private void printClients() {

@@ -52,25 +52,31 @@ public class BootstrapMenu {
     }
 
     private void fillDeviceMenu(){
-        entries.add(new AddDeviceMenu());
-        views.add(new AddDeviceView(startMenu));
+        AddDeviceView addDeviceView = new AddDeviceView(startMenu);
+        views.add(addDeviceView);
+        entries.add(new AddDeviceMenu(addDeviceView));
 
-        entries.add(new DeleteDeviceMenu());
-        views.add(new DeleteDeviceView(startMenu));
+        DeleteDeviceView deleteDeviceView = new DeleteDeviceView(startMenu);
+        views.add(deleteDeviceView);
+        entries.add(new DeleteDeviceMenu(deleteDeviceView));
 
-        entries.add(new EditDeviceMenu());
-        views.add(new EditDeviceView(startMenu));
+        EditDeviceView editDeviceView = new EditDeviceView(startMenu);
+        views.add(editDeviceView);
+        entries.add(new EditDeviceMenu(editDeviceView));
     }
 
     private void fillClientMenu(){
-        entries.add(new AddClientMenu());
-        views.add(new AddClientView(startMenu));
+        AddClientView addClientView = new AddClientView(startMenu);
+        views.add(addClientView);
+        entries.add(new AddClientMenu(addClientView));
 
-        entries.add(new DeleteClientMenu());
-        views.add(new DeleteClientView(startMenu));
+        DeleteClientView deleteClientView = new DeleteClientView(startMenu);
+        views.add(deleteClientView);
+        entries.add(new DeleteClientMenu(deleteClientView));
 
-        entries.add(new EditClientMenu());
-        views.add(new EditClientView(startMenu));
+        EditClientView editClientView = new EditClientView(startMenu);
+        views.add(editClientView);
+        entries.add(new EditClientMenu(editClientView));
     }
 
     private void fillPurchaseMenu(){

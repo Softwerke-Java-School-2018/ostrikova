@@ -54,6 +54,7 @@ public class SearchClientMenu implements BaseMenu {
         }
 
         searchClientView.printFoundClients(foundClientStream);
+        searchClientView.show("Search was successful\n");
     }
 
     private void showFields() {

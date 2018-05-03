@@ -1,5 +1,6 @@
 package storage;
 
+import exceptions.FieldNotFoundException;
 import model.Client;
 import model.Device;
 import model.Purchase;
@@ -31,7 +32,7 @@ public class PurchaseModelStorage {
         return purchases.stream();
     }
 
-    public void addPurchase(int clientId, int deviceId) {
+    public void addPurchase(int clientId, int deviceId) throws FieldNotFoundException {
 
         Client client = ClientModelStorage.getInstance().findClient(clientId);
         Device device = DeviceModelStorage.getInstance().findDevice(deviceId);

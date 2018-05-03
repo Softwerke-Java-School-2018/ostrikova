@@ -1,5 +1,7 @@
 package client;
 
+import exceptions.EmptyListException;
+import exceptions.FieldNotFoundException;
 import model.Client;
 import storage.ClientModelStorage;
 import org.junit.Before;
@@ -35,7 +37,13 @@ public class DeleteClientTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void deleteClientTest(){
-        ClientModelStorage.getInstance().deleteClient(0);
+        try {
+            ClientModelStorage.getInstance().deleteClient(0);
+        } catch (FieldNotFoundException e){
+            e.getMessage();
+        } catch (EmptyListException e){
+            e.getMessage();
+        }
 
         List<Client> deletedClient = ClientModelStorage
                 .getInstance()

@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 
 public class AddPurchaseView implements BaseView {
     private StartMenu startMenu;
+    private String exceptionMessage = "Couldn't add purchase: ";
 
     public AddPurchaseView(StartMenu startMenu){
         this.startMenu = startMenu;
@@ -18,8 +19,8 @@ public class AddPurchaseView implements BaseView {
 
 
     @Override
-    public void show() {
-        ReaderWriter.getInstance().printLine("Purchase added\n");
+    public void show(String message) {
+        ReaderWriter.getInstance().printLine(exceptionMessage + message);
     }
 
     public void printClients(Stream<Client> clientsStream){

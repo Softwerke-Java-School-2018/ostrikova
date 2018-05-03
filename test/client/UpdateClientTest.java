@@ -1,5 +1,6 @@
 package client;
 
+import exceptions.FieldNotFoundException;
 import model.Client;
 import storage.ClientModelStorage;
 import org.junit.Assert;
@@ -37,7 +38,11 @@ public class UpdateClientTest {
 
     @Test
     public void updateClientTest(){
-        ClientModelStorage.getInstance().editFirstName(0, "Смирнов");
+        try {
+            ClientModelStorage.getInstance().editFirstName(0, "Смирнов");
+        } catch (FieldNotFoundException e){
+            e.getMessage();
+        }
 
         List<Client> clientList = ClientModelStorage
                 .getInstance()

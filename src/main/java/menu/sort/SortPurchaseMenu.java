@@ -45,7 +45,7 @@ public class SortPurchaseMenu implements BaseMenu {
         }
 
         sortPurchaseView.printSortedPurchases(sortedPurchaseStream);
-
+        sortPurchaseView.show("Sorted list\n");
     }
 
     private void showFields() {

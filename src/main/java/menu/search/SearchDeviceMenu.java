@@ -72,7 +72,7 @@ public class SearchDeviceMenu implements BaseMenu {
         }
 
         searchDeviceView.printFoundDevices(foundDeviceStream);
-
+        searchDeviceView.show("Search was successful\n");
     }
 
     private void showFields() {

@@ -1,9 +1,11 @@
 package menu;
 
+import exceptions.FieldNotFoundException;
 import scanner.ReaderWriter;
 import view.BaseView;
 import view.ExitView;
 
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +18,13 @@ public class StartMenu {
 
     private BootstrapMenu bootstrapMenu = new BootstrapMenu(entries, views, this);
 
-    public StartMenu(){
-        entries.add(() -> isExit = true);
-        views.add(new ExitView(this));
+    public StartMenu() {
+        ExitView exitView = new ExitView(this);
+        entries.add(() -> {
+            isExit = true;
+            exitView.show("Successful exit");
+        });
+        views.add(exitView);
     }
 
     public void start() {
@@ -34,9 +40,11 @@ public class StartMenu {
             BaseMenu menu = entries.get(choice - 1);
             BaseView view = views.get(choice - 1);
 
-            menu.run();
-            view.show();
-
+            try {
+                menu.run();
+            } catch (DateTimeParseException e){
+                view.show("Invalid Date format\n");
+            }
         }
     }
 

@@ -11,7 +11,7 @@ public class ExitView implements BaseView {
     }
 
     @Override
-    public void show() {
-        ReaderWriter.getInstance().printLine("Successful exit");
+    public void show(String message) {
+        ReaderWriter.getInstance().printLine(message);
     }
 }

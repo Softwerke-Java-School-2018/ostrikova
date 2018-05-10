@@ -1,6 +1,5 @@
 package sort;
 
-import menu.sort.SortClientMenu;
 import model.Client;
 import org.junit.Assert;
 import org.junit.Before;
@@ -27,8 +26,8 @@ public class SortClientTest {
         LocalDate birthDate = LocalDate.parse("1998-01-22");
 
         Client client = new Client.Builder()
-                .setFirstName("Иван")
-                .setLastName("Иванов")
+                .setFirstName("Ivan")
+                .setLastName("Ivanov")
                 .setBirthDate(birthDate)
                 .build();
 
@@ -37,8 +36,8 @@ public class SortClientTest {
         LocalDate secondBirthDate = LocalDate.parse("1999-01-22");
 
         Client secondClient = new Client.Builder()
-                .setFirstName("Александр")
-                .setLastName("Иванов")
+                .setFirstName("Alexander")
+                .setLastName("Ivanov")
                 .setBirthDate(secondBirthDate)
                 .build();
 
@@ -53,8 +52,8 @@ public class SortClientTest {
                 .collect(Collectors.toCollection(ArrayList::new));
 
 
-        Assert.assertEquals(clients.get(0).getFirstName(), "Александр");
-        Assert.assertEquals(clients.get(1).getFirstName(), "Иван");
+        Assert.assertEquals(clients.get(0).getFirstName(), "Alexander");
+        Assert.assertEquals(clients.get(1).getFirstName(), "Ivan");
     }
 
     private Comparator<Client> COMPARE_BY_FIRSTNAME = (one, other) -> {

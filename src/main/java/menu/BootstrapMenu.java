@@ -43,6 +43,9 @@ public class BootstrapMenu {
         this.startMenu = startMenu;
     }
 
+    /** Fill the list of menu
+     *  and view's list
+     */
     public void fillMenu(){
         fillDeviceMenu();
         fillClientMenu();

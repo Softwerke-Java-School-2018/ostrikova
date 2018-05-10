@@ -32,6 +32,16 @@ public class PurchaseModelStorage {
         return purchases.stream();
     }
 
+    /** Add purchase in purchase's list
+     * If the customer is already in the purchase's list
+     * then the device'll add in the device's list for
+     * a specific customer
+     *
+     * @see PurchaseModelStorage#addInDeviceModels(Device, Purchase)
+     * @param clientId client's id for adding a purchase
+     * @param deviceId device's id for adding a purchase
+     * @throws FieldNotFoundException if client or device wasn't find
+     */
     public void addPurchase(int clientId, int deviceId) throws FieldNotFoundException {
 
         Client client = ClientModelStorage.getInstance().findClient(clientId);

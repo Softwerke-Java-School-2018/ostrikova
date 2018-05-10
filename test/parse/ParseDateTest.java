@@ -15,8 +15,8 @@ public class ParseDateTest {
         LocalDate birthDate = LocalDate.parse("1998-01-22");
 
         Client client = new Client.Builder()
-                .setFirstName("Иван")
-                .setLastName("Иванов")
+                .setFirstName("Ivan")
+                .setLastName("Ivanov")
                 .setBirthDate(birthDate)
                 .build();
 
@@ -29,8 +29,8 @@ public class ParseDateTest {
         LocalDate birthDate = LocalDate.parse("1998/01/22");
 
         Client client = new Client.Builder()
-                .setFirstName("Иван")
-                .setLastName("Иванов")
+                .setFirstName("Ivan")
+                .setLastName("Ivanov")
                 .setBirthDate(birthDate)
                 .build();
 

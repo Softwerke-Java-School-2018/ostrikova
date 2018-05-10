@@ -27,6 +27,10 @@ public class StartMenu {
         views.add(exitView);
     }
 
+    /** Starts the right menu depending on the number
+     * entered from the console
+     * @throws DateTimeParseException if person entered an incorrect date
+     */
     public void start() {
 
         bootstrapMenu.fillMenu();

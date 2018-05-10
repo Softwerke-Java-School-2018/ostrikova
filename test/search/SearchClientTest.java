@@ -27,8 +27,8 @@ public class SearchClientTest {
         LocalDate birthDate = LocalDate.parse("1998-01-22");
 
         Client client = new Client.Builder()
-                .setFirstName("Иван")
-                .setLastName("Иванов")
+                .setFirstName("Ivan")
+                .setLastName("Ivanov")
                 .setBirthDate(birthDate)
                 .build();
 
@@ -39,20 +39,20 @@ public class SearchClientTest {
     @Test
     public void searchClientTest(){
         clients = ClientModelStorage.getInstance()
-                .findClientStreamByFirstName("Иван")
+                .findClientStreamByFirstName("Ivan")
                 .collect(Collectors.toCollection(ArrayList::new));
 
-        Assert.assertEquals(clients.get(0).getLastName(), "Иванов");
+        Assert.assertEquals(clients.get(0).getLastName(), "Ivanov");
         Assert.assertEquals(clients.get(0).getBirthDate().toString(), "1998-01-22");
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void searchFallClientTest(){
         clients = ClientModelStorage.getInstance()
-                .findClientStreamByFirstName("Николай")
+                .findClientStreamByFirstName("Nikolay")
                 .collect(Collectors.toCollection(ArrayList::new));
 
-        Assert.assertEquals(clients.get(0).getLastName(), "Иванов");
+        Assert.assertEquals(clients.get(0).getLastName(), "Ivanov");
         Assert.assertEquals(clients.get(0).getBirthDate().toString(), "1998-01-22");
     }
 }

@@ -28,8 +28,8 @@ public class UpdateClientTest {
         LocalDate birthDate = LocalDate.parse("1998-01-22");
 
         client = new Client.Builder()
-                .setFirstName("Иван")
-                .setLastName("Иванов")
+                .setFirstName("Ivan")
+                .setLastName("Ivanov")
                 .setBirthDate(birthDate)
                 .build();
 
@@ -50,7 +50,7 @@ public class UpdateClientTest {
                 .collect(Collectors.toList());
 
         String editClient = clientList.get(0).getFirstName();
-        Assert.assertNotEquals("Иванов", editClient);
-        Assert.assertEquals("Смирнов", editClient);
+        Assert.assertNotEquals("Ivanov", editClient);
+        Assert.assertEquals("Smirnov", editClient);
     }
 }

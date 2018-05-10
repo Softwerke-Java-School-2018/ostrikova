@@ -13,16 +13,16 @@ public class CreateClientTest {
         LocalDate birthDate = LocalDate.parse("1998-01-22");
 
         Client client = new Client.Builder()
-                .setFirstName("Иван")
-                .setLastName("Иванов")
+                .setFirstName("Ivan")
+                .setLastName("Ivanov")
                 .setBirthDate(birthDate)
                 .build();
 
         Assert.assertEquals(client.getClientId(), 0);
-        Assert.assertEquals(client.getFirstName(), "Иван");
-        Assert.assertEquals(client.getLastName(), "Иванов");
-        Assert.assertNotEquals(client.getFirstName(), "Иванов");
-        Assert.assertNotEquals(client.getLastName(), "Иван");
+        Assert.assertEquals(client.getFirstName(), "Ivan");
+        Assert.assertEquals(client.getLastName(), "Ivanov");
+        Assert.assertNotEquals(client.getFirstName(), "Ivanov");
+        Assert.assertNotEquals(client.getLastName(), "Ivan");
     }
 
 }

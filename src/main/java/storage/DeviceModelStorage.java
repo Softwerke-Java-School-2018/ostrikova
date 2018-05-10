@@ -65,11 +65,9 @@ public class DeviceModelStorage {
     public void editManufacturer(int id, String newManufacturer) throws FieldNotFoundException {
         boolean isFind = false;
 
-        ListIterator<Device> it = devices.listIterator();
-
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setManufacturer(newManufacturer);
+        for(Device device: devices){
+            if (device.getId() == id){
+                device.setManufacturer(newManufacturer);
                 isFind = true;
             }
         }
@@ -82,11 +80,9 @@ public class DeviceModelStorage {
     public void editModel(int id, String newModel) throws FieldNotFoundException {
         boolean isFind = false;
 
-        ListIterator<Device> it = devices.listIterator();
-
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setModel(newModel);
+        for(Device device: devices){
+            if (device.getId() == id){
+                device.setModel(newModel);
                 isFind = true;
             }
         }
@@ -99,11 +95,9 @@ public class DeviceModelStorage {
     public void editType(int id, String newType) throws FieldNotFoundException {
         boolean isFind = false;
 
-        ListIterator<Device> it = devices.listIterator();
-
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setType(newType);
+        for(Device device: devices){
+            if (device.getId() == id){
+                device.setType(newType);
                 isFind = true;
             }
         }
@@ -116,11 +110,9 @@ public class DeviceModelStorage {
     public void editColour(int id, String newColour) throws FieldNotFoundException {
         boolean isFind = false;
 
-        ListIterator<Device> it = devices.listIterator();
-
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setColour(newColour);
+        for(Device device: devices){
+            if (device.getId() == id){
+                device.setColour(newColour);
                 isFind = true;
             }
         }
@@ -133,11 +125,9 @@ public class DeviceModelStorage {
     public void editProductionDate(int id, String newProdDate) throws FieldNotFoundException {
         boolean isFind = false;
 
-        ListIterator<Device> it = devices.listIterator();
-
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setProductionDate(newProdDate);
+        for(Device device: devices){
+            if (device.getId() == id){
+                device.setProductionDate(newProdDate);
                 isFind = true;
             }
         }
@@ -150,11 +140,9 @@ public class DeviceModelStorage {
     public void editPrice(int id, String newPrice) throws FieldNotFoundException {
         boolean isFind = false;
 
-        ListIterator<Device> it = devices.listIterator();
-
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.previous().setPrice(newPrice);
+        for(Device device: devices){
+            if (device.getId() == id){
+                device.setPrice(newPrice);
                 isFind = true;
             }
         }

@@ -62,11 +62,9 @@ public class ClientModelStorage {
     public void editFirstName(int id, String newFirstName) throws FieldNotFoundException {
         boolean isFind = false;
 
-        ListIterator<Client> it = clients.listIterator();
-
-        while (it.hasNext()) {
-            if (it.next().getClientId() == id) {
-                it.previous().setFirstName(newFirstName);
+        for(Client client: clients){
+            if (client.getClientId() == id){
+                client.setLastName(newFirstName);
                 isFind = true;
             }
         }
@@ -79,11 +77,9 @@ public class ClientModelStorage {
     public void editLastName(int id, String newLastName) throws FieldNotFoundException {
         boolean isFind = false;
 
-        ListIterator<Client> it = clients.listIterator();
-
-        while (it.hasNext()) {
-            if (it.next().getClientId() == id) {
-                it.previous().setLastName(newLastName);
+        for(Client client: clients){
+            if (client.getClientId() == id){
+                client.setLastName(newLastName);
                 isFind = true;
             }
         }
@@ -96,11 +92,9 @@ public class ClientModelStorage {
     public void editBirthDate(int id, String newBirthDate) throws FieldNotFoundException {
         boolean isFind = false;
 
-        ListIterator<Client> it = clients.listIterator();
-
-        while (it.hasNext()) {
-            if (it.next().getClientId() == id) {
-                it.previous().setBirthDate(newBirthDate);
+        for (Client client: clients){
+            if (client.getClientId() == id){
+                client.setLastName(newBirthDate);
                 isFind = true;
             }
         }

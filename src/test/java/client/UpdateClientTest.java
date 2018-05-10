@@ -2,11 +2,11 @@ package client;
 
 import exceptions.FieldNotFoundException;
 import model.Client;
-import storage.ClientModelStorage;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import storage.ClientModelStorage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class UpdateClientTest {
     private static List<Client> clients;
-    private static Client client;;
+    private static Client client;
 
 
     @BeforeClass
@@ -39,7 +39,7 @@ public class UpdateClientTest {
     @Test
     public void updateClientTest(){
         try {
-            ClientModelStorage.getInstance().editFirstName(0, "Смирнов");
+            ClientModelStorage.getInstance().editLastName(0, "Smirnov");
         } catch (FieldNotFoundException e){
             e.getMessage();
         }
@@ -49,7 +49,7 @@ public class UpdateClientTest {
                 .getStreamClients()
                 .collect(Collectors.toList());
 
-        String editClient = clientList.get(0).getFirstName();
+        String editClient = clientList.get(0).getLastName();
         Assert.assertNotEquals("Ivanov", editClient);
         Assert.assertEquals("Smirnov", editClient);
     }

@@ -3,10 +3,10 @@ package client;
 import exceptions.EmptyListException;
 import exceptions.FieldNotFoundException;
 import model.Client;
-import storage.ClientModelStorage;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import storage.ClientModelStorage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

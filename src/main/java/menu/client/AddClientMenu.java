@@ -37,6 +37,7 @@ public class AddClientMenu implements BaseMenu {
                 .setBirthDate(birthDate)
                 .build();
 
+
         ClientModelStorage.getInstance().addClient(client);
 
     }

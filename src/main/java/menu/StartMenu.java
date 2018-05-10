@@ -1,6 +1,5 @@
 package menu;
 
-import exceptions.FieldNotFoundException;
 import scanner.ReaderWriter;
 import view.BaseView;
 import view.ExitView;

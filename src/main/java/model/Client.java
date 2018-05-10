@@ -20,6 +20,7 @@ public class Client {
 
     }
 
+
     public int getClientId() {
         return clientId;
     }
@@ -35,6 +36,7 @@ public class Client {
     public LocalDate getBirthDate() {
         return birthDate;
     }
+
 
 
     public void setFirstName(String firstName) {

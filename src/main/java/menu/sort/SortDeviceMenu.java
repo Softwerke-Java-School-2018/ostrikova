@@ -34,25 +34,25 @@ public class SortDeviceMenu implements BaseMenu {
 
         switch (field) {
             case "1":
-                sortedDeviceStream = deviceListStream.sorted(this.COMPARE_BY_MANUFACTURER);
+                sortedDeviceStream = deviceListStream.sorted(Comparator.comparing(Device::getManufacturer));
                 break;
             case "2":
-                sortedDeviceStream = deviceListStream.sorted(this.COMPARE_BY_MODEL);
+                sortedDeviceStream = deviceListStream.sorted(Comparator.comparing(Device::getModel));
                 break;
             case "3":
-                sortedDeviceStream = deviceListStream.sorted(this.COMPARE_BY_TYPE);
+                sortedDeviceStream = deviceListStream.sorted(Comparator.comparing(Device::getType));
                 break;
             case "4":
-                sortedDeviceStream = deviceListStream.sorted(this.COMPARE_BY_COLOUR);
+                sortedDeviceStream = deviceListStream.sorted(Comparator.comparing(Device::getColour));
                 break;
             case "5":
-                sortedDeviceStream = deviceListStream.sorted(this.COMPARE_BY_PRODUCTIONDATE);
+                sortedDeviceStream = deviceListStream.sorted(Comparator.comparing(Device::getProductionDate));
                 break;
             case "6":
-                sortedDeviceStream = deviceListStream.sorted(this.COMPARE_BY_PRICE);
+                sortedDeviceStream = deviceListStream.sorted(Comparator.comparing(Device::getPrice));
                 break;
             case "7":
-                sortedDeviceStream = deviceListStream.sorted(this.COMPARE_BY_ID);
+                sortedDeviceStream = deviceListStream.sorted(Comparator.comparing(Device::getId));
                 break;
         }
 
@@ -73,46 +73,4 @@ public class SortDeviceMenu implements BaseMenu {
         );
     }
 
-    private Comparator<Device> COMPARE_BY_ID = (one, other) -> {
-        String oneId = String.valueOf(one.getId());
-        String otherId = String.valueOf(other.getId());
-        return oneId.compareTo(otherId);
-    };
-
-    private Comparator<Device> COMPARE_BY_MANUFACTURER = (one, other) -> {
-        String oneManufacturer = one.getManufacturer();
-        String otherManufacturer = other.getManufacturer();
-        return oneManufacturer.compareTo(otherManufacturer);
-    };
-
-    private Comparator<Device> COMPARE_BY_MODEL = (one, other) -> {
-        String oneModel = one.getModel();
-        String otherModel = other.getModel();
-        return oneModel.compareTo(otherModel);
-    };
-
-    private Comparator<Device> COMPARE_BY_COLOUR = (one, other) -> {
-        String oneColour = one.getColour();
-        String otherColour = other.getColour();
-        return oneColour.compareTo(otherColour);
-    };
-
-    private Comparator<Device> COMPARE_BY_PRICE = (one, other) -> {
-        String onePrice = one.getPrice().toString();
-        String otherPrice = other.getPrice().toString();
-        return onePrice.compareTo(otherPrice);
-    };
-
-
-    private Comparator<Device> COMPARE_BY_PRODUCTIONDATE = (one, other) -> {
-        String oneProdDate = one.getProductionDate().toString();
-        String otherProdDate = other.getProductionDate().toString();
-        return oneProdDate.compareTo(otherProdDate);
-    };
-
-    private Comparator<Device> COMPARE_BY_TYPE = (one, other) -> {
-        String oneType = one.getType();
-        String otherType = other.getType();
-        return oneType.compareTo(otherType);
-    };
 }

@@ -34,16 +34,16 @@ public class SortClientMenu implements BaseMenu {
 
         switch (field) {
             case "1":
-                sortedClientStream = clientListStream.sorted(this.COMPARE_BY_FIRSTNAME);
+                sortedClientStream = clientListStream.sorted(Comparator.comparing(Client::getFirstName));
                 break;
             case "2":
-                sortedClientStream = clientListStream.sorted(this.COMPARE_BY_LASTNAME);
+                sortedClientStream = clientListStream.sorted(Comparator.comparing(Client::getLastName));
                 break;
             case "3":
-                sortedClientStream = clientListStream.sorted(this.COMPARE_BY_BIRTHDATE);
+                sortedClientStream = clientListStream.sorted(Comparator.comparing(Client::getBirthDate));
                 break;
             case "4":
-                sortedClientStream = clientListStream.sorted(this.COMPARE_BY_ID);
+                sortedClientStream = clientListStream.sorted(Comparator.comparing(Client::getClientId));
                 break;
         }
 
@@ -59,29 +59,5 @@ public class SortClientMenu implements BaseMenu {
                         "4. Id\n"
         );
     }
-
-    private Comparator<Client> COMPARE_BY_ID = (one, other) -> {
-        String oneId = String.valueOf(one.getClientId());
-        String otherId = String.valueOf(other.getClientId());
-        return oneId.compareTo(otherId);
-    };
-
-    private Comparator<Client> COMPARE_BY_FIRSTNAME = (one, other) -> {
-        String oneFirstName = one.getFirstName();
-        String otherFirstName = other.getFirstName();
-        return oneFirstName.compareTo(otherFirstName);
-    };
-
-    private Comparator<Client> COMPARE_BY_LASTNAME = (one, other) -> {
-        String oneLastName = one.getLastName();
-        String otherLastName = other.getLastName();
-        return oneLastName.compareTo(otherLastName);
-    };
-
-    private Comparator<Client> COMPARE_BY_BIRTHDATE = (one, other) -> {
-        String oneBirthDate = one.toString();
-        String otherBirthDate = other.getBirthDate().toString();
-        return oneBirthDate.compareTo(otherBirthDate);
-    };
 
 }

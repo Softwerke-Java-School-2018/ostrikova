@@ -86,7 +86,7 @@ public class ClientModelStorage {
 
         if(!isFind){
             throw new FieldNotFoundException();
-        } 
+        }
     }
 
     public void editBirthDate(int id, String newBirthDate) throws FieldNotFoundException {

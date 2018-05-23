@@ -51,6 +51,9 @@ public class Client {
         this.birthDate = LocalDate.parse(birthDate);
     }
 
+    public void setId(int id){
+        Client.id = 0;
+    }
 
     @Override
     public String toString(){

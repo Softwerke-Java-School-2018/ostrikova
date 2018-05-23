@@ -1,11 +1,9 @@
 package client;
 
+import exceptions.EmptyListException;
 import exceptions.FieldNotFoundException;
 import model.Client;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import storage.ClientModelStorage;
 
 import java.time.LocalDate;
@@ -19,12 +17,12 @@ public class UpdateClientTest {
 
 
     @BeforeClass
-    public static void initStorage(){
+    public static void initStorage() {
         clients = new ArrayList<>();
     }
 
     @Before
-    public void addClient(){
+    public void addClient() {
         LocalDate birthDate = LocalDate.parse("1998-01-22");
 
         client = new Client.Builder()
@@ -37,12 +35,8 @@ public class UpdateClientTest {
     }
 
     @Test
-    public void updateClientTest(){
-        try {
-            ClientModelStorage.getInstance().editLastName(0, "Smirnov");
-        } catch (FieldNotFoundException e){
-            e.getMessage();
-        }
+    public void updateClientTest() throws EmptyListException, FieldNotFoundException {
+        ClientModelStorage.getInstance().editLastName(1, "Smirnov");
 
         List<Client> clientList = ClientModelStorage
                 .getInstance()
@@ -52,5 +46,12 @@ public class UpdateClientTest {
         String editClient = clientList.get(0).getLastName();
         Assert.assertNotEquals("Ivanov", editClient);
         Assert.assertEquals("Smirnov", editClient);
+
+    }
+
+    @After
+    public void deleteClients() throws EmptyListException, FieldNotFoundException{
+        client.setId(0);
+        ClientModelStorage.getInstance().deleteClient(1);
     }
 }

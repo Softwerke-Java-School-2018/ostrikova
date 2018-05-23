@@ -3,6 +3,7 @@ package client;
 import exceptions.EmptyListException;
 import exceptions.FieldNotFoundException;
 import model.Client;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -18,12 +19,12 @@ public class DeleteClientTest {
 
 
     @BeforeClass
-    public static void initStorage(){
+    public static void initStorage() {
         clients = new ArrayList<>();
     }
 
     @Before
-    public void addClient(){
+    public void addClient() {
         LocalDate birthDate = LocalDate.parse("1998-01-22");
 
         Client client = new Client.Builder()
@@ -36,14 +37,8 @@ public class DeleteClientTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void deleteClientTest(){
-        try {
-            ClientModelStorage.getInstance().deleteClient(0);
-        } catch (FieldNotFoundException e){
-            e.getMessage();
-        } catch (EmptyListException e){
-            e.getMessage();
-        }
+    public void deleteClientTest() throws EmptyListException, FieldNotFoundException {
+        ClientModelStorage.getInstance().deleteClient(0);
 
         List<Client> deletedClient = ClientModelStorage
                 .getInstance()
@@ -52,4 +47,5 @@ public class DeleteClientTest {
 
         deletedClient.get(0);
     }
+
 }

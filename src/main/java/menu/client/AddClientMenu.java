@@ -41,4 +41,5 @@ public class AddClientMenu implements BaseMenu {
         ClientModelStorage.getInstance().addClient(client);
 
     }
+
 }
